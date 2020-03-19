@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ #header {
+    position: relative;
+    margin: 0;
+    padding-top: 0px;
+  }
+
+  body{
+  margin:0px;
+  }
+
+.highlight {
+    background: pink;   
+    border: solid 1px #555;
+}
+
+.small-box {
+    width: 300px;
+}
+
+#scrollerBox {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+    border: solid 1px #ccc;
+}
+

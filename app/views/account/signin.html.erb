@@ -1,0 +1,54 @@
+<div class="page-header" style="text-align: center;">
+<br>
+    <h1>Sign in</h1><br><br>
+</div>
+<div class="container">
+    <div class="row">
+    <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <%#
+                Error checking will be implemented later
+                <%= form_tag({controller: "sessions", action: "create"}) do % >
+                <% if errors.any? % >
+                <div class="alert alert-danger" role="alert">  
+                    <div>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            <span style="font-weight:bold;">Please fill in the right information</span>
+                    </div>
+                </div>
+                <% end % >
+                <% end % >
+            %>
+
+            <form action="/account/login" method="post">
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <label for="session_email">Email</label>
+                    <input class="form-control" type="email" name="" id="session_email" />
+                    <%# name="session[email]"%>
+                </div>
+
+                <div class="form-group">
+                    <label for="session_password">password</label>
+                    <input class="form-control" type="password" name="" id="session_password" />
+                    <%#name="session[password]"%>
+                </div>
+
+                <div class="form-group">
+                <label class="checkbox inline" for="session_remember_me">
+                    <input name="" type="hidden" value="0" />
+                    <%#name="session[remember_me]"%>
+                    <input type="checkbox" value="1" name="" id="session_remember_me" />
+                    <%#name="session[remember_me]"%>
+                    <span>Keep me signed-in</span>
+                </label>    
+                </div>         
+                <input type="submit" name="commit" value="Log in" class="btn btn-primary btn-lg btn-block" data-disable-with="Sign in" />
+                
+            </form>
+                <p>Don't have an account yet? <a href="/account/signup">Sign up here!</a></p>
+           </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

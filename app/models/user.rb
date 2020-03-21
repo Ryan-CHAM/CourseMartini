@@ -5,5 +5,11 @@ class User < ApplicationRecord
     VALID_EMAIL_REGEX =  /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     validates :email, format: {with: VALID_EMAIL_REGEX}, length: {maximum: 30}, uniqueness: { case_sensitive: false }
     has_secure_password 
-    validates :password, confirmation: { case_sensitive: true }
+    validate :password_confirmation_matches_password
+    def password_confirmation_matches_password
+      if password != password_confirmation
+      end
+    end
+    
+    
 end

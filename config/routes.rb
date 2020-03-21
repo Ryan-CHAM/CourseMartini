@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome' => 'welcome#index', :as => "welcome"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'account/signup'
-  get 'account/signin'
+  # get 'account/signup'
+  get 'sign-up' => 'account#signup'
+  #get 'account/signin'
+  get 'sign-in' => 'account#signin'
   get 'admin/user_table'
-  resources :account
+  resources :account, path: "sign-up", as: :account, only: [:create]
 end

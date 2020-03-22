@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'homepage/home'
   root 'homepage#home'
+  get 'homepage/about'
   get 'welcome' => 'welcome#index'
   # get 'account/signup'
   get 'sign-up' => 'account#signup'

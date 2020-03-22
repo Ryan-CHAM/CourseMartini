@@ -25,7 +25,6 @@
 			<ul class="navbar-nav mr-auto">
 				<li class=""><a class="nav-link" href="/homepage/about">About us</a></li>
 				<li class=""><a class="nav-link" href="">Tmp2</a></li>
-				<li class="divider-vertical-second-menu"></li>
 				<% if user_signed_in? %> 
   						<li class=""><a class="nav-link" href=""><%= current_user.name %></a></li>
 						<li class=""><a class="nav-link" data-method="delete" href="/users/sign_out">Log out</a></li>  
@@ -40,7 +39,7 @@
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-weight: 800;
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-weight: 500;
   text-transform: uppercase;">Search</button>
 			</form>
 			

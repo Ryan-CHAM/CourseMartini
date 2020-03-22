@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'homepage/home'
   devise_for :users
-  root 'welcome#index'
-  get 'welcome' => 'welcome#index', :as => "welcome"
+  get 'homepage/home'
+  root 'homepage#home'
+  get 'welcome' => 'welcome#index'
   # get 'account/signup'
   get 'sign-up' => 'account#signup'
-  #get 'account/signin'
+  # get 'account/signin'
   get 'sign-in' => 'account#signin'
   get 'admin/user_table'
   resources :account, path: "sign-up", as: :account, only: [:create]

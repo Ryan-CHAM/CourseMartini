@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'homepage/home'
+  devise_for :users
   root 'welcome#index'
   get 'welcome' => 'welcome#index', :as => "welcome"
   # get 'account/signup'

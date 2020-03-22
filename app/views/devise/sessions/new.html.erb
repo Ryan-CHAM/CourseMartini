@@ -1,0 +1,44 @@
+<div class="page-header" style="text-align: center;">
+<br>
+    <h1>Sign in</h1><br><br>
+</div>
+<div class="container">
+    <div class="row">
+    <div class="col-md-2"></div>
+        <div class="col-md-8">  
+
+            <% if alert%>
+            <div class="alert alert-danger" role="alert">  
+                <div>
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                        <span style="font-weight:bold;">There is something wrong.</span>
+                </div>
+                <p class="alert"><%= alert %></p>
+            </div>
+            <%end%>
+
+            <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="wluRE/qQdEmWfm0g2z6Hy11E5XfBwcwdPKm7/RZ/R6sMbRiVx+uZjcIlONy+I3q/HPYpjyd2Yv7/Fn5GFEooJQ==" />
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <label for="user_email">Email</label>
+                    <input class="form-control" type="email" name="user[email]" id="user_email" />
+                </div>
+
+                <div class="form-group">
+                    <label for="session_password">password</label>
+                    <input class="form-control" type="password" name="user[password]" id="user_password" />
+                </div>
+
+                <div class="form-group">
+                    <input name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
+                    <label for="user_remember_me">Remember me</label> 
+                </div>         
+                <input type="submit" name="commit" value="Log in" class="btn btn-primary btn-lg btn-block" data-disable-with="Log in" />
+                
+            </form>
+                <p>Don't have an account yet? <a href="sign-up">Sign up here!</a></p>
+           </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+current directory: /Users/jimmyli/CourseMartini-master/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+/Users/jimmyli/.rvm/rubies/ruby-2.5.1/bin/ruby -I /Users/jimmyli/.rvm/rubies/ruby-2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200321-51735-1l78u8u.rb extconf.rb
+creating Makefile
+
+current directory: /Users/jimmyli/CourseMartini-master/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/jimmyli/CourseMartini-master/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/jimmyli/CourseMartini-master/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20200321-51735-wvmd54/bootsnap

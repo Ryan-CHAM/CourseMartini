@@ -1,0 +1,30 @@
+<h1>new comment</h1>
+
+<%= form_for(@comment) do |f| %>
+	<%= f.label :username, "user name" %>
+	<%= f.text_field :username %> <br />
+
+	<%= f.label :courseid, "course id" %>
+	<%= f.text_field :courseid %> <br />
+	
+	<%= f.label :workload_score, "workload score (1 ~ 5)"%>
+	<%= f.text_field :workload_score %> <br />
+
+	<%= f.label :teachingQuality_score, "teaching quality score (1 ~ 5)"%>
+	<%= f.text_field :teachingQuality_score %> <br />
+
+	<%= f.label :difficulty_score, "difficulty score (1 ~ 5)"%>
+	<%= f.text_field :difficulty_score %> <br />
+
+	<%= f.label :usefulness_score, "usefulness score (1 ~ 5)"%>
+	<%= f.text_field :usefulness_score %> <br />
+
+	<%= f.label :posts, "your comment"%>
+	<%= f.text_area :posts %> <br />
+	
+	<%= f.submit %>
+<% end %>
+
+
+<br />
+<%= link_to 'back to comments', comments_path%>

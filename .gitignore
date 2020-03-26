@@ -34,3 +34,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# System File by Mac
+.DS_Store
+*/.DS_Store

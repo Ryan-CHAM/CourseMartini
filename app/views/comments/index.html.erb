@@ -1,0 +1,42 @@
+<h1> Comments </h1>
+
+<%= link_to "new comment", new_comment_path %>
+
+<table>
+	<thead>
+		<tr>
+			<td> user name </td>
+			<td>  </td>
+			<td>  </td>
+			<td> course name </td>
+			<td>  </td>
+			<td>  </td>
+			<td> comment </td>
+			<td>  </td>
+			<td>  </td>
+			<td> overall score </td>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @comments.each do |comment| %>
+		<tr>
+			<td><%= comment.username %></td>
+			<td>  </td>
+			<td>  </td>
+			<td><%= comment.courseid %></td>
+			<td>  </td>
+			<td>  </td>
+			<td><%= comment.posts %></td>
+			<td>  </td>
+			<td>  </td>
+			<td><%= comment.score %></td>
+			<td>  </td>
+			<td>  </td>
+			<td>
+				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

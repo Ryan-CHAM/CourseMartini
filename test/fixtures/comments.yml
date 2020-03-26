@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  posts: MyText
+  score: 1.5
+  username: MyString
+  courseid: MyString
+
+two:
+  posts: MyText
+  score: 1.5
+  username: MyString
+  courseid: MyString

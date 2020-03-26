@@ -11,6 +11,19 @@
     </div>
   <% end %>
 
+
+  <%# <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div> %>
+
+  <%# TODO: finish this form %>
+  <div class="form-group">
+    <label >Course Code</label>
+    <%= form.text_field :code %>
+  </div>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -21,10 +34,12 @@
     <%= form.text_field :subject %>
   </div>
 
+
   <div class="field">
-    <%= form.label :code %>
-    <%= form.text_field :code %>
+    <%= form.label :faculty %>
+    <%= form.text_field :faculty %>
   </div>
+
 
   <div class="field">
     <%= form.label :description %>
@@ -52,6 +67,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :gpa %>
+    <%= form.text_field :gpa %>
+  </div>
+
+  <div class="field">
     <%= form.label :overall %>
     <%= form.text_field :overall %>
   </div>
@@ -59,6 +79,16 @@
   <div class="field">
     <%= form.label :n_comments %>
     <%= form.number_field :n_comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :book %>
+    <%= form.text_area :book %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_area :url %>
   </div>
 
   <div class="actions">

@@ -5,6 +5,7 @@
 <% end %>
 
 
+<h1><%= @course.code %> <%= @course.name %> </h1>
 
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -20,10 +21,6 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-    </p>
 
     <p>
       <strong>Subject:</strong>
@@ -31,8 +28,8 @@
     </p>
 
     <p>
-      <strong>Code:</strong>
-      <%= @course.code %>
+      <strong>Faculty:</strong>
+      <%= @course.faculty %>
     </p>
 
     <p>
@@ -40,6 +37,12 @@
       <%= @course.description %>
     </p>
 
+
+
+   
+  
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <p>
       <strong>Workload:</strong>
       <%= @course.workload %>
@@ -61,25 +64,40 @@
     </p>
 
     <p>
+      <strong>Average GPA:</strong>
+      <%= @course.gpa %>
+    </p>
+
+    <p>
       <strong>Overall:</strong>
       <%= @course.overall %>
     </p>
 
     <p>
-      <strong>N comments:</strong>
+      <strong>Number of reviews:</strong>
       <%= @course.n_comments %>
     </p>
-
-    <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-primary" %>
-    <%= link_to 'Back', course_path, :class=>"btn btn-outline-primary" %>
   
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
-    <div class="embed-responsive embed-responsive-16by9">
+    <%# <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-    </div>
+    </div> %>
+
+    <p>
+      <strong>Textbook:</strong>
+      <%= @course.book %>
+    </p>
+
+    <p>
+      <strong>Course Website:</strong>
+      <%= @course.url %>
+    </p>
+
   
   </div>
 </div>
+
+<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-primary" %>
+<%= link_to 'Back', courses_path, :class=>"btn btn-outline-primary" %>

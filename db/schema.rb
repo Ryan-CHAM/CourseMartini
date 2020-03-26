@@ -27,15 +27,19 @@ ActiveRecord::Schema.define(version: 2020_03_26_091326) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.string "subject"
     t.string "code"
+    t.string "subject"
+    t.string "faculty"
     t.text "description"
     t.float "workload"
     t.float "difficulty"
     t.float "quality"
     t.float "usefulness"
     t.float "overall"
+    t.float "gpa"
     t.integer "n_comments"
+    t.text "book"
+    t.text "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

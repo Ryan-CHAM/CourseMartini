@@ -2,8 +2,24 @@
 
 one:
   name: MyString
-  score: 1.5
+  subject: MyString
+  code: MyString
+  description: MyText
+  workload: 1.5
+  difficulty: 1.5
+  quality: 1.5
+  usefulness: 1.5
+  overall: 1.5
+  n_comments: 1
 
 two:
   name: MyString
-  score: 1.5
+  subject: MyString
+  code: MyString
+  description: MyText
+  workload: 1.5
+  difficulty: 1.5
+  quality: 1.5
+  usefulness: 1.5
+  overall: 1.5
+  n_comments: 1

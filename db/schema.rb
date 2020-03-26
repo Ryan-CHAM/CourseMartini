@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_092156) do
+ActiveRecord::Schema.define(version: 2020_03_26_091326) do
 
   create_table "comments", force: :cascade do |t|
     t.text "posts"
@@ -27,7 +27,15 @@ ActiveRecord::Schema.define(version: 2020_03_21_092156) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.float "score"
+    t.string "subject"
+    t.string "code"
+    t.text "description"
+    t.float "workload"
+    t.float "difficulty"
+    t.float "quality"
+    t.float "usefulness"
+    t.float "overall"
+    t.integer "n_comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

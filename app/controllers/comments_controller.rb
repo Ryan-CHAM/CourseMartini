@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	
 	def index
 		@comments = Comment.all
 	end
@@ -13,8 +14,8 @@ class CommentsController < ApplicationController
 		#valid score
 		#score will change to option bottum
 		#username and course id will be unchangable after finishing course and user part
-		@comment.score=(@comment.workload_score+@comment.teachingQuality_score+@comment.difficulty_score+@comment.usefulness_score)/4
-		if @comment.score>10 || @comment.score<0
+		if @comment.score>5 || @comment.score<0
+			flash[:notice] = "invalid score"
 			render :new
 
 		else if @comment.save	#success
@@ -36,7 +37,7 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
-		params.require(:comment).permit(:username, :courseid, :workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
+		params.require(:comment).permit(:username, :courseid, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 
 

@@ -1,3 +1,9 @@
+<% if notice %>
+<div class="alert alert-success" role="alert">
+  <p id="notice"><%= notice %></p>
+</div>
+<% end %>
+
 <h1>new comment</h1>
 
 <%= form_for(@comment) do |f| %>
@@ -6,6 +12,12 @@
 
 	<%= f.label :courseid, "course id" %>
 	<%= f.text_field :courseid %> <br />
+
+	<%= f.label :gpa, "Your GPA"%>
+	<%= f.text_field :gpa %> <br />
+
+	<%= f.label :score, "overall score (1 ~ 5)"%>
+	<%= f.text_field :score %> <br />
 	
 	<%= f.label :workload_score, "workload score (1 ~ 5)"%>
 	<%= f.text_field :workload_score %> <br />

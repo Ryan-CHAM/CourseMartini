@@ -1,20 +1,25 @@
 <h1> Comments </h1>
 
-<%= link_to "new comment", new_comment_path %>
 
 <table>
+	<table class="table table-striped">
 	<thead>
 		<tr>
-			<td> user name </td>
-			<td>  </td>
-			<td>  </td>
-			<td> course name </td>
-			<td>  </td>
-			<td>  </td>
-			<td> comment </td>
-			<td>  </td>
-			<td>  </td>
-			<td> overall score </td>
+			<th> user name </th>
+					
+			<th> course name </th>
+	
+			<th> overall score </th>
+
+			<th> work load </th>
+
+			<th> teaching quality </th>
+
+			<th> difficulty </th>
+
+			<th> usefulness </th>
+
+			<th> comment </th>
 
 		</tr>
 	</thead>
@@ -22,17 +27,21 @@
 		<% @comments.each do |comment| %>
 		<tr>
 			<td><%= comment.username %></td>
-			<td>  </td>
-			<td>  </td>
+	
 			<td><%= comment.courseid %></td>
-			<td>  </td>
-			<td>  </td>
-			<td><%= comment.posts %></td>
-			<td>  </td>
-			<td>  </td>
+
 			<td><%= comment.score %></td>
-			<td>  </td>
-			<td>  </td>
+
+			<td><%= comment.workload_score %></td>
+
+			<td><%= comment.teachingQuality_score %></td>
+
+			<td><%= comment.difficulty_score %></td>
+
+			<td><%= comment.usefulness_score %></td>
+
+			<td><%= comment.posts %></td>
+
 			<td>
 				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>
 			</td>
@@ -40,3 +49,4 @@
 		<% end %>
 	</tbody>
 </table>
+<%= link_to "new comment", new_comment_path, :class=>"btn btn-outline-primary" %>

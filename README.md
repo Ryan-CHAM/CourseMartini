@@ -1,3 +1,9 @@
 # CourseMartini
 ### Enjoy a cup of Course Martini, shaken, not stirred. 
-![Homepage](homepage.png)
+##Welcome page
+![Welcome](welcome.png)
+##Home page
+![Homepage](home.png)
+##Chart
+![Chart](chart.png)
+

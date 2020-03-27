@@ -11,84 +11,74 @@
     </div>
   <% end %>
 
-
-  <%# <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div> %>
-
-  <%# TODO: finish this form %>
   <div class="form-group">
-    <label >Course Code</label>
-    <%= form.text_field :code %>
+    <label> Course Code </label>
+    <%= form.text_field :code, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <label> Course Name </label>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :subject %>
-    <%= form.text_field :subject %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :faculty %>
-    <%= form.text_field :faculty %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <label> Subject </label>
+    <%= form.text_field :subject, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :workload %>
-    <%= form.text_field :workload %>
+    <label> Faculty </label>
+    <%= form.text_field :faculty, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :difficulty %>
-    <%= form.text_field :difficulty %>
+    <label> Description </label>
+    <%= form.text_field :description, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :quality %>
-    <%= form.text_field :quality %>
+     <label> Workload </label>
+    <%= form.text_field :workload, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :usefulness %>
-    <%= form.text_field :usefulness %>
+    <label> Difficulty </label>
+    <%= form.text_field :difficulty, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :gpa %>
-    <%= form.text_field :gpa %>
+    <label> Quality </label>
+    <%= form.text_field :quality, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :overall %>
-    <%= form.text_field :overall %>
+    <label> Usefulness </label>
+    <%= form.text_field :usefulness, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :n_comments %>
-    <%= form.number_field :n_comments %>
+    <label> Grade </label>
+    <%= form.text_field :gpa, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :book %>
-    <%= form.text_area :book %>
+    <label> Overall Score </label>
+    <%= form.text_field :overall, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :url %>
-    <%= form.text_area :url %>
+    <label> Number of Reviews </label>
+    <%= form.number_field :n_comments, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <label> TextBook(s) </label>
+    <%= form.text_area :book, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <label> Course Website </label>
+    <%= form.text_area :url, class: 'form-control' %>
   </div>
 
   <div class="actions">

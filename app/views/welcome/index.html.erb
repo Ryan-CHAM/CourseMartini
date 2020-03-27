@@ -12,25 +12,33 @@
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-    <br><br><br><br>
-    <div class="page-header" style="text-align: center;">
-        <h1>Course Martini</h1><br><br>
-            <p>Welcome Message / Slogan</p>
-            <%# Will change a lot based on other parts%>
-            <a href="/homepage/home">Overview</a><br>
-            <a href="">Search</a><br>
-            <a href="users/sign_up">Sign up</a>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
-
+	<div class="gradient">
+		<div class="container"><br><br><br><br>
+			<div class="page-header" style="text-align: center;">
+				<h1 style="color:white">Course Martini</h1>
+					<h2 style="color:white">Enjoy a cup of Course Martini, shaken, not stirred.</h2>
+					<br>
+					<%# Will change a lot based on other parts%>
+					<div class="row">
+						<div class="col-md-2 offset-md-5">
+							<a class="btn btn-outline-light rounded-pill btn-md btn-block" href="/homepage/home">Overview</a><br><br>
+							<a class="btn btn-outline-light rounded-pill btn-md btn-block" href="">Search  </a><br><br>
+							<a class="btn btn-outline-light rounded-pill btn-md btn-block" href="users/sign_up">Sign up </a>
+						</div>
+					</div>
+    		</div>
+		</div>
+	
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"></script>
+	</div>
 </body>
 
 </html>

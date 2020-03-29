@@ -5,7 +5,9 @@ class CommentsController < ApplicationController
 	end
 
 	def new
+		
 		@comment = Comment.new
+		#@comment.user_id = User.id
 		#still need user and course controller
 	end
 

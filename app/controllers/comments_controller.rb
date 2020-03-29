@@ -20,13 +20,11 @@ class CommentsController < ApplicationController
 			flash[:notice] = "invalid score"
 			render :new
 
-		else if @comment.save	#success
+		elsif @comment.save	#success
 			redirect_to comments_path, notice: "make new comment"#finally redirect to course page
 		else				#fail
 			puts(@comment.errors)
 			render :new
-		end
-		
 		end
 	end
 
@@ -39,7 +37,7 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
-		params.require(:comment).permit(:username, :courseid, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
+		params.require(:comment).permit(:username, :gpa,:courseid, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 
 

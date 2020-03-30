@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
 	def new
 		
 		@comment = Comment.new
-		#@comment.user_id = User.id
+
+
 		#still need user and course controller
 	end
 
@@ -23,7 +24,7 @@ class CommentsController < ApplicationController
 		elsif @comment.save	#success
 			redirect_to comments_path, notice: "make new comment"#finally redirect to course page
 		else				#fail
-			puts(@comment.errors)
+			puts(User.first,Course.first,@comment.errors)
 			render :new
 		end
 	end
@@ -37,7 +38,7 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
-		params.require(:comment).permit(:username, :gpa,:courseid, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
+		params.require(:comment).permit(:user_id,:course_id,:username, :gpa,:courseid, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 
 

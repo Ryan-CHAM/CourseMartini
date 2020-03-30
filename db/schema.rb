@@ -21,9 +21,13 @@ ActiveRecord::Schema.define(version: 2020_03_27_114052) do
     t.float "usefulness_score", default: 0.0
     t.string "username"
     t.string "courseid"
+    t.integer "user_id"
+    t.integer "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "gpa"
+    t.index ["course_id"], name: "index_comments_on_course_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|

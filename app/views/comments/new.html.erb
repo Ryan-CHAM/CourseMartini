@@ -1,34 +1,29 @@
 <% if notice %>
-<div class="alert alert-success" role="alert">
-  <p id="notice"><%= notice %></p>
+<div>
+<p class="alert alert-warning" role="alert"><%= get_flash=notice%></p>
 </div>
 <% end %>
 
 <h1>new comment</h1>
 
 <%= form_for(@comment) do |f| %>
-	<%= f.label :username, "user name" %>
-	<%= f.text_field :username %> <br />
-
-	<%= f.label :courseid, "course id" %>
-	<%= f.text_field :courseid %> <br />
-
+	
 	<%= f.label :gpa, "Your GPA"%>
 	<%= f.text_field :gpa %> <br />
 
-	<%= f.label :score, "overall score (1 ~ 5)"%>
+	<%= f.label :score, "overall score (0 ~ 5)"%>
 	<%= f.text_field :score %> <br />
 	
-	<%= f.label :workload_score, "workload score (1 ~ 5)"%>
+	<%= f.label :workload_score, "workload score (0 ~ 5)"%>
 	<%= f.text_field :workload_score %> <br />
 
-	<%= f.label :teachingQuality_score, "teaching quality score (1 ~ 5)"%>
+	<%= f.label :teachingQuality_score, "teaching quality score (0 ~ 5)"%>
 	<%= f.text_field :teachingQuality_score %> <br />
 
-	<%= f.label :difficulty_score, "difficulty score (1 ~ 5)"%>
+	<%= f.label :difficulty_score, "difficulty score (0 ~ 5)"%>
 	<%= f.text_field :difficulty_score %> <br />
 
-	<%= f.label :usefulness_score, "usefulness score (1 ~ 5)"%>
+	<%= f.label :usefulness_score, "usefulness score (0 ~ 5)"%>
 	<%= f.text_field :usefulness_score %> <br />
 
 	<%= f.label :posts, "your comment"%>

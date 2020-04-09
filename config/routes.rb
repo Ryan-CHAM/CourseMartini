@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   get 'homepage/home'
   root 'homepage#home'
   get 'homepage/about'
+  get 'homepage' => 'homepage#home'
   get 'welcome' => 'welcome#index'
-  # get 'account/signup'
-  get 'sign-up' => 'account#signup'
-  # get 'account/signin'
-  get 'sign-in' => 'account#signin'
   get 'admin/user_table'
-  resources :account, path: "sign-up", as: :account, only: [:create]
   resources :courses
   get "/search", to: "courses#search"
   resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  devise_for :users,
+          :skip => [:registrations]
+  devise_scope :user do
+    get "users/sign_up", to: "users/registrations#new", as: :new_user_registration
+    post "users/sign_up", to: "users/registrations#create", as: :user_registration
+  end
+  
 end

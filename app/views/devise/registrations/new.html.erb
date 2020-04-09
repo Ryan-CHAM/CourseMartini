@@ -1,45 +1,49 @@
-<div class="page-header" style="text-align: center;">
-<br>
-    <h1>Sign up</h1><br>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <% if @user.errors.any? %>
-            <div class="alert alert-danger" role="alert">  
-                <div>
-                <span class="glyphicon glyphicon-exclamation-sign"></span>
-                        <span style="font-weight:bold;">Your sign-up has <%= pluralize(@user.errors.count, "error") %>.</span>
+<div class= "gradient2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="user_form">
+                        <h2 style="margin-bottom:-30px"><strong>Sign Up</strong></h2>       
+                        <div class="col-lg-8 offset-lg-2">
+                            <% if @user.errors.any? %>
+                                <div class="signup_alert" role="alert">
+                                    <br>
+                                    <%if @user.errors[:name]%>
+                                        <p>&nbsp&nbsp*Invalid name</p>
+                                    <% end %>
+                                    <%if @user.errors[:email]%>
+                                        <p>&nbsp&nbsp*Invalid email</p>
+                                    <% end %>
+                                    <%if @user.errors[:password]%>
+                                        <p>&nbsp&nbsp*Invalid password</p>
+                                    <% end %>
+                                    <%if @user.errors.full_messages.include?("Password confirmation doesn't match Password")%>
+                                        <p>&nbsp&nbsp*Passwords does not match</p>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Name: length 2~16" type="text" name="user[name]" id="user_name" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Email Address" type="email" value="" name="user[email]" id="user_email" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password: length 6~20" type="password" name="user[password]" id="user_password" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password Confirmation" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+                                </div>
+                                <%= f.button "Create User", class: 'btn btn-primary btn-lg btn-block' %>
+                            <% end %>
+                            <br><br><br><br>
+                        </div>
+                    </div>
                 </div>
-                <ul style="list-style: none; text-align: left">
-                    <% @user.errors.full_messages.each do |msg| %>
-                    <li>* <%= msg %></li>
-                    <% end %>
-                </ul>
             </div>
-            <% end %>
-
-            <form class="new_user" id="new_user" action="/users" method="post">
-                <div class="form-group">
-                </div>
-                <div class="form-group">
-                    <label>User name</label>
-                    <input type="text" name="user[name]" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="user[email]" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="user[password]" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Password_Confirmation</label>
-                    <input type="password" name="user[password_confirmation]" class="form-control">
-                </div>
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" name="commit" value="Create User" data-disable-with="Create User" />
-            </form>
         </div>
     </div>
 </div>
+

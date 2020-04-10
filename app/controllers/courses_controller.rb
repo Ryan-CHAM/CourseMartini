@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    redirect_to root_path unless current_user&.admin? 
     @courses = Course.all
   end
 
@@ -14,11 +15,13 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+    redirect_to root_path unless current_user&.admin? 
     @course = Course.new
   end
 
   # GET /courses/1/edit
   def edit
+    redirect_to root_path unless current_user&.admin? 
   end
 
   # POST /courses
@@ -75,4 +78,5 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url)
     end
+
 end

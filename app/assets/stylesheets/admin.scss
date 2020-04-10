@@ -1,3 +1,48 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.user_box{
+    width: 100%;
+    height:50vh;
+    background-color: white;
+    color:rgb(29, 29, 29);
+}
+
+.course_box{
+    width: 100%;
+    height:50vh;
+    background-color: rgb(29, 29, 29);
+    color: white
+}
+
+button {
+    border: 0px;
+}
+
+.user_box p{
+    font-size:70px;
+}
+
+.course_box p{
+    font-size:70px;
+}
+
+.user_box:hover{
+    height:55vh;
+}
+
+.course_box:hover{
+    margin-top: -5vh;
+    height:55vh;
+}
+
+.user_box:hover p{
+    font-size: 80px;
+    text-shadow: 2px 2px #505050;
+}
+
+.course_box:hover p{
+    font-size: 80px;
+    text-shadow: 2px 2px #505050;
+}
+

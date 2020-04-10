@@ -27,11 +27,14 @@
 				<li class=""><a class="nav-link" href="/homepage/about">About us</a></li>
 				<li class=""><a class="nav-link" href="">Tmp2</a></li>
 				<% if user_signed_in? %> 
-  						<li class=""><a class="nav-link" href=""><%= current_user.name %></a></li>
-						<li class=""><a class="nav-link" data-method="delete" href="/users/sign_out">Log out</a></li>  
+  					<li class=""><a class="nav-link" href=""><%= current_user.name %></a></li>
+					<li class=""><a class="nav-link" data-method="delete" href="/users/sign_out">Log out</a></li>  
 				<% else %>
-						<li class=""><a class="nav-link" href="/users/sign_in">Sign in </a></li>
-						<li class=""><a class="nav-link" href="/users/sign_up">Sign up</a></li>
+					<li class=""><a class="nav-link" href="/users/sign_in">Sign in </a></li>
+					<li class=""><a class="nav-link" href="/users/sign_up">Sign up</a></li>
+				<% end %>
+				<% if current_user&.admin? %>
+					<li class=""><a class="nav-link" href="/admin/index">Admin Page</a></li>
 				<% end %>
 				
 			</ul>

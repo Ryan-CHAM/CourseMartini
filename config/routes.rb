@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'homepage/about'
   get 'homepage' => 'homepage#home'
   get 'welcome' => 'welcome#index'
+  get 'admin/index'
+  get 'admin' => 'admin#index'
   get 'admin/user_table'
   resources :courses
   get "/search", to: "courses#search"

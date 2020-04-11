@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
-	
+	before_action :check_sign_in
+
+
+
 	def index
 		@comments = Comment.all
 	end
@@ -13,7 +16,7 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@user=User.first
+		@user=current_user
 		@course=Course.first
 		@comment = Comment.new(comment_params)
 		@comment.update(user:@user,course:@course)
@@ -29,14 +32,13 @@ class CommentsController < ApplicationController
 		elsif @comment.save	#success
 			redirect_to comments_path, notice: "make new comment"#finally redirect to course page
 		else				#fail
-			puts(User.first,Course.first,@comment.errors)
 			render :new
 		end
 	end
 
 	
 	def update
-		@user=User.first
+		@user=current_user
 		@course=Course.first
 		@comment = Comment.new(comment_params)
 		@comment.update(user:@user,course:@course)
@@ -52,7 +54,6 @@ class CommentsController < ApplicationController
 		elsif @comment.save	#success
 			redirect_to comments_path, notice: "make new comment"#finally redirect to course page
 		else				#fail
-			puts(User.first,Course.first,@comment.errors)
 			render :new
 		end
 	end
@@ -69,5 +70,11 @@ class CommentsController < ApplicationController
 		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 
+	def check_sign_in
+		unless user_signed_in?
+			flash[:notice] = "please sign in"
+			redirect_to root_path
+		end
+	end
 
 end

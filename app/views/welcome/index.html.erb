@@ -10,35 +10,151 @@
 
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		.container-fluid {
+			padding: 0;
+		}
+	</style>
 </head>
+
 <body>
-	<div class="gradient">
-		<div class="container"><br><br><br><br>
+	<div class="container-fluid">
+		<div class="gradient">
 			<div class="page-header" style="text-align: center;">
 				<h1 style="color:white">Course Martini</h1>
-					<h2 style="color:white">Enjoy a cup of Course Martini, shaken, not stirred.</h2>
-					<br>
-					<%# Will change a lot based on other parts%>
-					<div class="row">
-						<div class="col-md-2 offset-md-5">
-							<a class="btn btn-outline-light rounded-pill btn-md btn-block" href="/homepage/home">Overview</a><br><br>
-							<a class="btn btn-outline-light rounded-pill btn-md btn-block" href="">Search  </a><br><br>
-							<a class="btn btn-outline-light rounded-pill btn-md btn-block" href="users/sign_up">Sign up </a>
+				<h2 style="color:white">Enjoy a cup of Course Martini, shaken, not stirred.</h2>
+				<br>
+				<div class="row">
+					<div class="col-lg-2 offset-lg-5">
+						<div class="col-lg-8 offset-lg-2">
+							<a class="btn btn-outline-light rounded-pill  btn-block"
+								href="/homepage/home">Overview</a><br><br>
+							<a class="btn btn-outline-light rounded-pill  btn-block" href="#about-us">About
+								Us</a><br><br>
+							<a class="btn btn-outline-light rounded-pill  btn-block" href="#get-started">Get Started</a>
 						</div>
 					</div>
-    		</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="about">
+			<div class="col-lg-8 offset-lg-2">
+				<br><br>
+					<h1 id="about-us">About Us</h1>
+					<p>Course selection is a stage in universities where students have to decide their own path of
+						reaching academic goals. Sometimes it is difficult to choose the course that best suits
+						students’ academic demands.<br><br>
+						Course Martini, is a platform for students to share their own experiences
+						on different courses CUHK provides. The reviews provided will guide others on course selecting
+						decisions to
+						improve the overall quality of their academic experience during the studying period.</p>
+				
+			</div>
 		</div>
 	
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-			crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"></script>
+		
+
+		<div class="comment">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					<div class="quote">
+						<blockquote>
+							&ldquo; When I was a freshman, course selection gave me a really hard time, because I do not
+							know which
+							course to choose, and which professor's style fits me more. Now, with Course Martini, making
+							decisions
+							on course selecting is just so much more easier! &rdquo;
+							<cite>&mdash; Yuren Qin, Yr2</cite>
+						</blockquote>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div class="get-started" >
+				<h1 id ="get-started"> Get Started here!</h1>
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2">
+
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="card-btn">
+									<div class="card mb-4 shadow-sm" onclick="location.href ='/users/sign_up';"
+										style="cursor: pointer;">
+										<div class="card-img-top"
+											style="background-color:#FFB6C1; width:100%; height:225px">
+											<h2>Join us</h2>
+										</div>
+										<div class="card-body">
+											<p class="card-text">
+												Please join our community of Course Martini to share your opinions on
+												courses, and
+												improve the plateform.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-4">
+								<div class="card-btn">
+									<div class="card mb-4 shadow-sm" onclick="location.href ='/users/sign_up';"
+										style="cursor: pointer;">
+										<div class="card-img-top" style="background-color:#fc8cb4; height:225px">
+											<h2>Trends!</h2>
+										</div>
+										<div class="card-body">
+											<p class="card-text">Our platform have various type of graphs on course
+												statstics based on the
+												reviews collected.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-4">
+								<div class="card-btn">
+									<div class="card mb-4 shadow-sm" onclick="location.href ='/users/sign_up';"
+										style="cursor: pointer;">
+										<div class="card-img-top" style="background-color:#fc749c; height:225px">
+											<h2>Search</h2>
+										</div>
+										<div class="card-body">
+											<p class="card-text">If you want to get started with our system directly,
+												you may as well start your search first.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-8 offset-lg-2" style="text-align: center;">
+								<h2>Already a member?</h2>
+								<button type="button" class="btn btn-lg btn-outline-warning">Sign in here!</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div class="end">
+			<p>Created by team Course Martini</p>
+		</div>
 	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
 </body>
+
+
 
 </html>

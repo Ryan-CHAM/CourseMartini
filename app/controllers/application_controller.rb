@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
     
 
   def first_time_visit?
-     cookies[:first_visit] = 1
-     redirect_to '/welcome'
+      unless user_signed_in?
+        cookies[:first_visit] = 1
+        redirect_to '/welcome'
+      end
   end
 
     def configure_permitted_parameters

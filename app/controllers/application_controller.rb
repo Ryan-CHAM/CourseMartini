@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     
 
   def first_time_visit?
-      unless user_signed_in?
+      unless user_signed_in? && !cookies[:first_visit]
         cookies[:first_visit] = 1
         redirect_to '/welcome'
       end

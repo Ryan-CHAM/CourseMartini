@@ -213,8 +213,13 @@ a:hover{
   border-bottom: 2px solid rgb(199, 191, 219);
 }
 .user_form input[type='checkbox'] {
-  float: left;
+  margin-top: 5px;
+  float:left;
   width: 20%;
+}
+
+.user_form label {
+  width:50%;
 }
 
 .user_form input[type='checkbox'] + label {

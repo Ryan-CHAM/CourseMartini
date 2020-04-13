@@ -21,13 +21,13 @@
                         <div class="form-group">
                             <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Password" %>
                         </div>
-                        <% if devise_mapping.rememberable? -%>
-                            <%= f.check_box :remember_me, label: false, style:"width:20%" %> 
-                            <label>Remember me</label>
-                        <% end -%>
+                        <label>
+                            <%= f.check_box :remember_me, label: false, style:"width:20%" %>  Remember me</label>
                         <%= f.button "Sign in", class: 'btn btn-primary btn-lg btn-block' %>
                         <% end %>
-                        <p>Don't have an account yet? <br><a href="/users/sign_up">Sign up here!</a></p>
+                        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+                        <% end %>
                         <br><br><br><br>
                         </div>
                     </div>

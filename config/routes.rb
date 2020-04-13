@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'homepage/home'
   root 'homepage#home'
   get 'homepage/about'
+  get 'homepage/contact'
   get 'homepage' => 'homepage#home'
   get 'welcome' => 'welcome#index'
   get 'admin/index'
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
     get "users/sign_up", to: "users/registrations#new", as: :new_user_registration
     post "users/sign_up", to: "users/registrations#create", as: :user_registration
   end
+  get 'users/password', to: redirect("/users/password/new")
   
 end

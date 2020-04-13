@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'homepage/home'
   root 'homepage#home'
   get 'homepage/about'
+  get 'homepage/contact'
   get 'homepage' => 'homepage#home'
   get 'welcome' => 'welcome#index'
   get 'admin/index'

@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     get "users/sign_up", to: "users/registrations#new", as: :new_user_registration
     post "users/sign_up", to: "users/registrations#create", as: :user_registration
   end
+  get 'users/password', to: redirect("/users/password/new")
   
 end

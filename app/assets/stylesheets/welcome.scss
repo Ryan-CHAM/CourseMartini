@@ -153,34 +153,20 @@ blockquote cite{
     border-color: pink;
 }
 
-.btn.btn-outline-warning:active{
-    color: #ffffff;
-    background-color: pink;
-    border-color: pink;
+.btn.btn-lg.btn-outline-warning:hover,
+.btn.btn-lg.btn-outline-warning:active,
+.btn.btn-lg.btn-outline-warning:visited,
+.btn.btn-lg.btn-outline-warning:focus {
+    color: #ffffff !important;
+    background-color: pink !important;
+    border-color: pink !important;
+    box-shadow: 0 0 0 .2rem pink !important;
 }
 
 .search-bar{
     padding: 60px 30px;
 }
 
-.btn.btn-warning {
-    color: #ffffff;
-    border: 3px solid pink;
-    background-color: pink;
-    border-color: pink;
-  }
-
-.btn.btn-warning:hover {
-    color: #ffffff;
-    background-color: rgb(255, 155, 172);
-    border-color: rgb(255, 155, 172);
-}
-
-.btn.btn-warning.active {
-    color: #ffffff;
-    background-color: pink;
-    border-color: pink;
-}
 
 .end{ 
     height:70px;

@@ -1,0 +1,36 @@
+<div class="gradient2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                    <div class="user_form">
+                        <h2 style="margin-bottom: 10px; text-transform: uppercase"><strong><%= @user.name%>'s Profile</strong></h2>
+                        <div class="col-lg-8 offset-lg-2" >   
+                            <div class="text_box">
+                                <strong>About me</strong><br>
+                                <%if @user.intro == nil%>
+                                    <p>This user did not write anything here </p>
+                                <%else%>
+                                     <%=@user.intro%>
+                                <%end%>
+                            </div>
+
+                            <div class="text_box">
+                                <strong>Reviews contributed</strong><br>
+                                <p><%= @count%></p>
+                            </div>
+
+                            <div class="text_box">
+                                <strong>Latest review</strong><br>
+                                <p><%= @last%></p>
+                                <!--Will present data based on how comments are presented in course page-->
+                            </div>
+                            <br>
+                            <p style="text-align: right"><a href="">View all his comments</a></p>
+                            <br>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

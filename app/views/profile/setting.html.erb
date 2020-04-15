@@ -1,0 +1,40 @@
+<div class="gradient2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                    <div class="user_form">
+                        <h2 style="margin-bottom: 10px; text-transform: uppercase"><strong>Settings</strong></h2>
+                        <div class="col-lg-8 offset-lg-2" >   
+                            <div class="text_box">
+                                <strong>Registered email</strong><br>
+                                <p><%= @user.email%></p>
+                                <br>
+                            </div>
+
+                            <div class="text_box">
+                                <strong>User name</strong><br>
+                                <p><%= @user.name%></p>
+                                <p style="text-align: right"><a href="">Edit user name</a></p>
+                            </div>
+
+                            <div class="text_box">
+                                <strong>About me</strong><br>
+                                <p><%= @user.intro%></p>
+                                <p style="text-align: right"><a href="">Edit about me</a></p>
+                            </div>
+
+                            <div class="text_box">
+                                <strong>Password</strong><br>
+                                <button>Change password</button>
+                                <!--Will present data based on how comments are presented in course page-->
+                            </div>
+                            <br>
+                            <p style="text-align: right"><a href="">View all my comments</a></p>
+                            <br>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

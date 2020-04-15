@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'admin/index'
   get 'admin' => 'admin#index'
   get 'admin/user_table'
+  get 'profile/setting'
+  get 'profile/:id' => 'profile#index'
   resources :courses
   get "/search", to: "courses#search"
   resources :comments

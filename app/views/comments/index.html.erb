@@ -1,8 +1,4 @@
-<% if notice %>
-<div class="alert alert-success" role="alert">
-  <p id="notice"><%= notice %></p>
-</div>
-<% end %>
+
 <h1> Comments </h1>
 
 
@@ -26,6 +22,8 @@
 
 			<th> comment </th>
 
+			<th> GPA </th>
+
 		</tr>
 	</thead>
 	<tbody>
@@ -46,6 +44,8 @@
 			<td><%= comment.usefulness_score %></td>
 
 			<td><%= comment.posts %></td>
+
+			<td><%= comment.gpa %></td>
 
 			<td>
 				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>

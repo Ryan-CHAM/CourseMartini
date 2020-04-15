@@ -25,6 +25,11 @@ class CommentsController < ApplicationController
 		#valid score
 		#score will change to option bottum
 		#username and course id will be unchangable after finishing course and user part
+		@comment.score=@comment.score/2
+		@comment.workload_score=@comment.workload_score/2
+		@comment.teachingQuality_score=@comment.teachingQuality_score/2
+		@comment.difficulty_score=@comment.difficulty_score/2
+		@comment.usefulness_score=@comment.usefulness_score/2
 		if @comment.score>5 || @comment.score<0
 			flash[:notice] = "invalid score"
 			render :new

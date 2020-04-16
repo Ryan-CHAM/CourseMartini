@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#index'
   get 'admin/user_table'
   get 'profile/setting'
+  get 'profile/update', to: redirect("/profile/setting")
   get 'profile/:id' => 'profile#index'
+  post 'profile/update'
   resources :courses
   get "/search", to: "courses#search"
   resources :comments
@@ -22,5 +24,6 @@ Rails.application.routes.draw do
     post "users/sign_up", to: "users/registrations#create", as: :user_registration
   end
   get 'users/password', to: redirect("/users/password/new")
+  
   
 end

@@ -1,13 +1,13 @@
 <div class="gradient2">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-6 offset-lg-3">
                     <div class="user_form">
                         <h2 style="margin-bottom: 10px; text-transform: uppercase"><strong><%= @user.name%>'s Profile</strong></h2>
                         <div class="col-lg-8 offset-lg-2" >   
                             <div class="text_box">
                                 <strong>About me</strong><br>
-                                <%if @user.intro == nil%>
+                                <%if @user.intro == nil || @user.intro == ""%>
                                     <p>This user did not write anything here </p>
                                 <%else%>
                                      <%=@user.intro%>

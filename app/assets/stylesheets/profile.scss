@@ -2,17 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.user_form h2{
+    font-size:24px;
+}
 .text_box{
     margin-top: 5px;
-    margin-bottom:40px;
+    margin-bottom:20px;
     
 }
 
 .text_box p{
-    padding: 0px 20px;
     font-size: 14px;
+    padding-top:10px;
 }
 
 .text_box strong{
     font-size: 16px;
+}
+
+.user_form input{
+    margin-top: -5px;
+}
+.user_form textarea{
+    border: 0;
+    background: none;
+    outline: 1px;
+    margin: 20px 0;
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    transition: .2s;
+    border-radius: 3px;
+    border: 2px solid rgb(199, 191, 219);
 }

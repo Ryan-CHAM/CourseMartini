@@ -65,7 +65,7 @@ class CoursesController < ApplicationController
   end
   
   def search
-      @courses = Course.search(params[:search])
+      @courses = Course.search(params[:search]).page(params[:page]).per(5)
   end
 
   private

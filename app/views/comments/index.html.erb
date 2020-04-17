@@ -1,10 +1,5 @@
-<% if notice %>
-<div class="alert alert-success" role="alert">
-  <p id="notice"><%= notice %></p>
-</div>
-<% end %>
-<h1> Comments </h1>
 
+<h1> Comments </h1>
 
 <table>
 	<table class="table table-striped">
@@ -25,6 +20,8 @@
 			<th> usefulness </th>
 
 			<th> comment </th>
+
+			<th> GPA </th>
 
 		</tr>
 	</thead>
@@ -47,6 +44,8 @@
 
 			<td><%= comment.posts %></td>
 
+			<td><%= comment.gpa %></td>
+
 			<td>
 				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>
 			</td>
@@ -54,4 +53,4 @@
 		<% end %>
 	</tbody>
 </table>
-<%= link_to "new comment", new_comment_path, :class=>"btn btn-outline-primary" %>
+<%= link_to "new comment", new_comment_path(@id), :class=>"btn btn-outline-primary" %>

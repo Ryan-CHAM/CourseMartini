@@ -77,6 +77,7 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
+		#这边把后面的三个值删了
 		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 

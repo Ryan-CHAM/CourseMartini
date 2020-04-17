@@ -16,8 +16,6 @@ class Course < ApplicationRecord
             if results
                 Course.where(code: results)
             end
-        else
-            @courses = Course.all
         end
     end
 end

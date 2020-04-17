@@ -11,10 +11,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <form class="input-group md-form form-sm form-2 pl-0" action="">
-        <input class="form-control sub my-0 py-1" type="search" placeholder="Search" aria-label="Search">
+      <form class="input-group md-form form-sm form-2 pl-0" action="/search" accept-charset="UTF-8" method="get">
+        <input class="form-control sub my-0 py-1" type="text" placeholder="e.g. CSCI3100" aria-label="Search" name="search" id="search">
         <div class="input-group-append">
-          <button class="btn btn-info my-2 my-sm-0" type="submit"><span class="fa fa-search"></span></button>
+          <button class="btn btn-info my-2 my-sm-0" type="submit" value="Search" data-disable-with="Search"><span class="fa fa-search"></span></button>
         </div>
       </form>
     </div>
@@ -22,9 +22,6 @@
   <br><br><br>
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <p>No idea what to search? Maybe you can view by faculty</p>
-      <p>faculty choices will be installed later</p>
-      <br><br>
       <a href="/admin/user_table">Template of an admin page viewing all user datas to test the sign-up function,
         hyperlink will be removed later</a><br>
       <br>

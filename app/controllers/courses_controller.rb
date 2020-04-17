@@ -57,10 +57,11 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
+    redirect_to root_path unless current_user&.admin?
 
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'Course was successfully deleted.' }
       format.json { head :no_content }
     end
   end

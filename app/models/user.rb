@@ -16,8 +16,7 @@ class User < ApplicationRecord
       if password != password_confirmation
       end
     end
-    
-    validates :intro, length:{in: 0..150}
+  
 
   has_many :comments
 	has_many :courses, through: :comments

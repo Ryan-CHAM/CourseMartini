@@ -32,6 +32,12 @@
   </div>
 
   <div class="field">
+    <label> Instructor </label>
+    <%= form.text_field :instructor, class: 'form-control' %>
+  </div>
+
+
+  <div class="field">
     <label> Description </label>
     <%= form.text_field :description, class: 'form-control' %>
   </div>
@@ -81,7 +87,7 @@
     <%= form.text_area :url, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <p></p>
+
 <% end %>

@@ -36,7 +36,7 @@
 							<% if current_user&.admin? %>
 								<a class="dropdown-item" href="/admin/index">Admin Page</a>
 							<% end %>
-							<a class="dropdown-item" data-method="delete" href="/users/sign_out">Log out</a>
+							<a rel="nofollow" data-method="delete" href="/users/sign_out" class="dropdown-item">Logout</a>
 						</div>
 					</li>
 				<% else %>

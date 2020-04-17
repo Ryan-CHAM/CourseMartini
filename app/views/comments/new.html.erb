@@ -165,7 +165,9 @@ slider5.oninput = function() {
     <label> Comment </label>
     <%= f.text_area :posts, class: 'form-control' %>
   </div>
-	
+  
+  <!--带值，可以不叫course_id-->
+	<%= hidden_field_tag :course_id, @id %>
 
 <div class="actions">
     <%= f.submit %>

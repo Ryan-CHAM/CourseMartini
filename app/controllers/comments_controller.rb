@@ -1,16 +1,12 @@
 class CommentsController < ApplicationController
 	before_action :check_sign_in
-
-
-
 	def index
-			#render json: params
-			@id = params[:format]
-			if @id != nil
-				@comments = Comment.where(course_id: params[:format])
-			else
-				@comments = Comment.all
-			end
+		@id = params[:format]
+		if @id != nil
+			@comments = Comment.where(course_id: params[:format])
+		else
+			@comments = Comment.all
+		end
 	end
 
 	def new
@@ -24,15 +20,14 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		render json: params
-=begin
+		#render json: params
 		@user=current_user
-		
 		@comment = Comment.new(comment_params)
-		@id = @comment.course_id
-		@course = Course.find_by(id: @id)
-		@comment.update(user:@user, course:@course)
-		#@comment.courseid = @course.name
+
+		#引用了带的值
+		@comment.course_id = params[:course_id]
+		@comment.courseid = 1
+		@comment.user_id = @user[:id]
 		@comment.username = @user.name
 		#valid score
 		#score will change to option bottum
@@ -42,16 +37,12 @@ class CommentsController < ApplicationController
 		@comment.teachingQuality_score=@comment.teachingQuality_score/2
 		@comment.difficulty_score=@comment.difficulty_score/2
 		@comment.usefulness_score=@comment.usefulness_score/2
-		if @comment.score>5 || @comment.score<0
-			flash[:notice] = "invalid score"
-			render :new
-
-		elsif @comment.save	#success
-			redirect_to comments_path(@id), notice: "make new comment"#finally redirect to course page
+		if @comment.save	#success
+			puts '1'
+			#redirect_to comments_path(@id), notice: "make new comment"#finally redirect to course page
 		else				#fail
-			render :new
+			#render :new
 		end
-=end
 	end
 
 	
@@ -70,9 +61,9 @@ class CommentsController < ApplicationController
 			render :new
 
 		elsif @comment.save	#success
-			redirect_to comments_path, notice: "make new comment"#finally redirect to course page
+			#redirect_to comments_path, notice: "make new comment"#finally redirect to course page
 		else				#fail
-			render :new
+			#render :new
 		end
 	end
 
@@ -86,7 +77,7 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
-		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts, :course_id, :courseid)
+		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 
 	

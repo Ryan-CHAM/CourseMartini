@@ -1,37 +1,181 @@
-<% if notice %>
-<div>
-<p class="alert alert-warning" role="alert"><%= get_flash=notice%></p>
-</div>
-<% end %>
+
 
 <h1>new comment</h1>
 
 <%= form_for(@comment) do |f| %>
 	
-	<%= f.label :gpa, "Your GPA"%>
-	<%= f.text_field :gpa %> <br />
 
-	<%= f.label :score, "overall score (0 ~ 5)"%>
-	<%= f.text_field :score %> <br />
+
+
+<p>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+
+ Grade: 
+<div class="btn-group mr-2" role="group" aria-label="First group">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="comment[gpa]" value="4.0" id="option1" autocomplete="off" checked> A
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="3.7" id="option2" autocomplete="off"> A-
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="3.3" id="option3" autocomplete="off"> B+
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="3.0" id="option3" autocomplete="off"> B
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="2.7" id="option3" autocomplete="off"> B-
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="2.3" id="option3" autocomplete="off"> C+
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="2.0" id="option3" autocomplete="off"> C
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="1.7" id="option3" autocomplete="off"> C-
+  </label>
+
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="1.3" id="option3" autocomplete="off"> D+
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="1.0" id="option3" autocomplete="off"> D
+  </label>
+<label class="btn btn-secondary">
+    <input type="radio" name="comment[gpa]" value="0.0" id="option3" autocomplete="off"> F
+  </label>
+
+
+</div>
+
+
+</div>
+</p>
+
+
+
+<div class="slidecontainer">
+  
 	
-	<%= f.label :workload_score, "workload score (0 ~ 5)"%>
-	<%= f.text_field :workload_score %> <br />
+	<p>Overall Score: <span id="Overall"></span> <td> <td> <input type="range" min="0" max="10" value="0" class="slider" id="comment_score_rails" name="comment[score]"></p>
 
-	<%= f.label :teachingQuality_score, "teaching quality score (0 ~ 5)"%>
-	<%= f.text_field :teachingQuality_score %> <br />
 
-	<%= f.label :difficulty_score, "difficulty score (0 ~ 5)"%>
-	<%= f.text_field :difficulty_score %> <br />
+<script>
+var slider1 = document.getElementById("comment_score_rails");
+var score = document.getElementById("Overall");
+score.innerHTML = slider1.value;
+slider1.oninput = function() {
+  score.innerHTML = (this.value/2).toFixed(1);
 
-	<%= f.label :usefulness_score, "usefulness score (0 ~ 5)"%>
-	<%= f.text_field :usefulness_score %> <br />
+}
+</script>
+</div>
 
-	<%= f.label :posts, "your comment"%>
-	<%= f.text_area :posts %> <br />
+
+
+
+
+<div class="slidecontainer">
+  
 	
-	<%= f.submit %>
+	<p>Workload Score: <span id="workload"></span> <td> <td> <input type="range" min="0" max="10" value="0" class="slider" id="comment_workload_score_rails" name="comment[workload_score]"></p>
+
+
+<script>
+var slider2 = document.getElementById("comment_workload_score_rails");
+var workload_score = document.getElementById("workload");
+workload_score.innerHTML = slider2.value;
+slider2.oninput = function() {
+  workload_score.innerHTML = (this.value/2).toFixed(1);
+
+}
+</script>
+</div>	
+
+
+
+ 
+	
+
+
+
+  <div class="slidecontainer">
+  
+	
+	<p>Teaching Quality Score: <span id="quality"></span> <td> <td> <input type="range" min="0" max="10" value="0" class="slider" id="comment_teachingQuality_score_rails" name="comment[teachingQuality_score]"></p>
+
+
+<script>
+var slider3 = document.getElementById("comment_teachingQuality_score_rails");
+var quality = document.getElementById("quality");
+quality.innerHTML = slider3.value;
+slider3.oninput = function() {
+  quality.innerHTML = (this.value/2).toFixed(1);
+
+}
+</script>
+</div>
+
+ 
+	
+
+
+<div class="slidecontainer">
+  
+	
+	<p>Difficulty Score: <span id="Difficulty"></span> <td> <td> <input type="range" min="0" max="10" value="0" class="slider" id="comment_difficulty_score_rails" name="comment[difficulty_score]"></p>
+
+
+<script>
+var slider4 = document.getElementById("comment_difficulty_score_rails");
+var Difficulty = document.getElementById("Difficulty");
+Difficulty.innerHTML = slider4.value;
+slider4.oninput = function() {
+  Difficulty.innerHTML = (this.value/2).toFixed(1);
+
+}
+</script>
+</div>
+
+ 
+	
+  <div class="slidecontainer">
+  
+	
+	<p>Usefulness Score: <span id="Usefulness"></span> <td> <td> <input type="range" min="0" max="10" value="0" class="slider" id="comment_usefulness_score_rails" name="comment[usefulness_score]"></p>
+
+
+<script>
+var slider5 = document.getElementById("comment_usefulness_score_rails");
+var Usefulness = document.getElementById("Usefulness");
+Usefulness.innerHTML = slider5.value;
+slider5.oninput = function() {
+  Usefulness.innerHTML = (this.value/2).toFixed(1);
+
+}
+</script>
+</div>
+	
+	
+	
+<div class="field">
+    <label> Comment </label>
+    <%= f.text_area :posts, class: 'form-control' %>
+  </div>
+  
+  <!--带值，可以不叫course_id-->
+	<%= hidden_field_tag :course_id, @id %>
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+	
+
 <% end %>
 
 
 <br />
-<%= link_to 'back to comments', comments_path%>
+<%= link_to 'back to comments', comments_path(@id)%>

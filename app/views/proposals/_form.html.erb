@@ -1,10 +1,10 @@
-<%= form_with(model: course, local: true) do |form| %>
-  <% if course.errors.any? %>
+<%= form_with(model: proposal, local: true) do |form| %>
+  <% if proposal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <h2><%= pluralize(proposal.errors.count, "error") %> prohibited this proposal from being saved:</h2>
 
       <ul>
-        <% course.errors.full_messages.each do |message| %>
+        <% proposal.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

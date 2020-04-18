@@ -185,6 +185,7 @@
 <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
 <%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
 <%# <%= link_to 'Show Comment', comments_path(@course), :class=>"btn btn-outline-primary" %>
+<%= link_to "new comment", new_comment_path(@course.id), :class=>"btn btn-dark" %>
     </div>
     <div class="col">
       <%# 3 of 3 %>

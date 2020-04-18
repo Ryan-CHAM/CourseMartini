@@ -85,9 +85,12 @@ section {
 nav {
   width: 100%;
   margin: 0 auto;
-  background: #fff;
   padding: 50px 0;
   box-shadow: 0px 5px 0px #dedede;
+}
+
+nav.navbar-dark{
+  background: rgba(0, 28, 61, 0.829);
 }
 nav ul {
   list-style: none;

@@ -9,18 +9,12 @@
                             <% if @user.errors.any? %>
                                 <div class="signup_alert" role="alert">
                                     <br>
-                                    <%if @user.errors[:name]%>
-                                        <p>&nbsp&nbsp*Invalid name</p>
-                                    <% end %>
-                                    <%if @user.errors[:email]%>
-                                        <p>&nbsp&nbsp*Invalid email</p>
-                                    <% end %>
-                                    <%if @user.errors[:password]%>
-                                        <p>&nbsp&nbsp*Invalid password</p>
-                                    <% end %>
-                                    <%if @user.errors.full_messages.include?("Password confirmation doesn't match Password")%>
-                                        <p>&nbsp&nbsp*Passwords does not match</p>
-                                    <% end %>
+                                    <% @user.errors.full_messages.each do |msg| %>
+                                        <%if msg.include?("invalid")%>
+                                            <%next%>
+                                        <%end%>
+                                    <p>* <%=msg%></p>
+                                    <%end%>
                                 </div>
                             <% end %>
                             <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>

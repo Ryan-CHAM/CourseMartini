@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
 	def new
 		#render json: params
 		$courseidforcomment = params[:format]
-		@course = Course.find_by(id: $courseidforcomment)
+		@id = $courseidforcomment
+		@course = Course.find_by(id: @id)
 		@comment = Comment.new
 		
 		
@@ -29,9 +30,10 @@ class CommentsController < ApplicationController
 
 		@user=current_user
 		
-		@comment = Comment.new(comment_params)
-		@id = $courseidforcomment
+		@id = params[:course_id]
 		@course = Course.find_by(id: @id)
+
+		@comment = Comment.new(comment_params)
 		@comment.update(user:@user, course:@course)
 		@comment.courseid = @course.name
 		@comment.username = @user.name
@@ -88,7 +90,7 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
-		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts, :course_id, :course_id)
+		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 	end
 
 	

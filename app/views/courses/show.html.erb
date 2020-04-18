@@ -7,100 +7,184 @@
     </div>
     <div class="col-9">
       <%# 2 of 3 (wider) %>
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Information</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Reviews</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Ratings</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Resources</a>
+    <a class="nav-link" id="trend-tab" data-toggle="tab" href="#trend" role="tab" aria-controls="trend" aria-selected="false">Trends</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="false">Comments</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="resource-tab" data-toggle="tab" href="#resource" role="tab" aria-controls="resource" aria-selected="false">Resources</a>
   </li>
 </ul>
+
+
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <p><br></p>
 
-    <p>
-      <strong>Subject:</strong>
-      <%= @course.subject %>
-    </p>
-
-    <p>
-      <strong>Faculty:</strong>
-      <%= @course.faculty %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @course.description %>
-    </p>
-
-
-
-   
-  
+  <div class="card border-info mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Subject</strong></div>
+    <div class="card-body text-info">
+      <%# <h5 class="card-title">Primary card title</h5> %>
+      <p class="card-text"><%= @course.subject %></p>
+    </div>
   </div>
+  
+    
+  <div class="card border-success mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Faculty</strong></div>
+    <div class="card-body text-success">
+      <%# <h5 class="card-title">Primary card title</h5> %>
+      <p class="card-text"><%= @course.faculty %></p>
+    </div>
+  </div>
+
+    
+  <div class="card border-danger mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Instructor</strong></div>
+    <div class="card-body text-danger">
+      <%# <h5 class="card-title">Primary card title</h5> %>
+      <p class="card-text"><%= @course.instructor %></p>
+    </div>
+  </div>
+
+    
+  <div class="card border-dark mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Description</strong></div>
+    <div class="card-body text-dark">
+      <%# <h5 class="card-title">Primary card title</h5> %>
+      <p class="card-text"><%= @course.description %></p>
+    </div>
+  </div>
+  </div>
+
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <p>
-      <strong>Workload:</strong>
-      <%= @course.workload %>
-    </p>
+    <p><br></p>
 
     <p>
-      <strong>Difficulty:</strong>
-      <%= @course.difficulty %>
+      <strong>Based on <%= @course.n_comments %> comments, we have</strong>
     </p>
 
-    <p>
-      <strong>Quality:</strong>
-      <%= @course.quality %>
-    </p>
+    <div class="card border-primary mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Overall Rating</strong></div>
+      <div class="card-body text-primary">
+        <h5 class="card-title"><%= @course.workload %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+      </div>
+    </div>
 
-    <p>
-      <strong>Usefulness:</strong>
-      <%= @course.usefulness %>
-    </p>
+    <div class="card border-success mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Teaching Quality</strong></div>
+      <div class="card-body text-success">
+        <h5 class="card-title"><%= @course.quality %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow=@course.quality aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+      </div>
+    </div>
 
-    <p>
-      <strong>Average GPA:</strong>
-      <%= @course.gpa %>
-    </p>
+    <div class="card border-info mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Usefulness</strong></div>
+      <div class="card-body text-info">
+        <h5 class="card-title"><%= @course.usefulness %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow=@course.usefulness aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+      </div>
+    </div>
 
-    <p>
-      <strong>Overall:</strong>
-      <%= @course.overall %>
-    </p>
 
-    <p>
-      <strong>Number of reviews:</strong>
-      <%= @course.n_comments %>
-    </p>
-  
+    <div class="card border-danger mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Difficulty</strong></div>
+      <div class="card-body text-danger">
+        <h5 class="card-title"><%= @course.difficulty %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow=@course.difficulty aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card border-warning mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Workload</strong></div>
+      <div class="card-body text-warning">
+        <h5 class="card-title"><%= @course.workload %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card border-dark mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Average GPA</strong></div>
+      <div class="card-body text-dark">
+        <h5 class="card-title"><%= @course.gpa %> / 4</h5>
+        <div class="progress">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: 25%" aria-valuenow=@course.gpa aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+  <div class="tab-pane fade" id="trend" role="tabpanel" aria-labelledby="trend-tab">
+  <p><br></p>
+  <p>show digrams here</p>
+  </div>
+
+
+  <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
+  <p><br></p>
+  <p>show comments here</p>
+  </div>
+
+
+  <div class="tab-pane fade" id="resource" role="tabpanel" aria-labelledby="resource-tab">
+  <p><br></p>
 
     <%# <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
     </div> %>
 
-    <p>
-      <strong>Textbook:</strong>
-      <%= @course.book %>
-    </p>
 
-    <p>
-      <strong>Course Website:</strong>
-      <%= @course.url %>
-    </p>
+  <div class="card border-dark mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Textbook</strong></div>
+    <div class="card-body text-dark">
+      <%# <h5 class="card-title">Primary card title</h5> %>
+      <p class="card-text"><%= @course.book %></p>
+    </div>
+  </div>
+
+
+  <div class="card border-dark mb-3" style="max-width: 100rem;">   
+    <div class="card-header"><strong>Course Website</strong></div>
+    <div class="card-body text-dark">
+      <%# <h5 class="card-title">Primary card title</h5> %>
+      <p class="card-text"><%= @course.url %></p>
+    </div>
+  </div>
+
+
 
   
   </div>
+
+
 </div>
 
-<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-primary" %>
-<%= link_to 'Back', courses_path, :class=>"btn btn-outline-primary" %>
-<%= link_to 'Show Comment', comments_path(@course), :class=>"btn btn-outline-primary" %>
+<p><br></p>
+<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
+<%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
+<%# <%= link_to 'Show Comment', comments_path(@course), :class=>"btn btn-outline-primary" %>
     </div>
     <div class="col">
       <%# 3 of 3 %>

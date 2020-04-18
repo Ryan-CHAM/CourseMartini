@@ -115,12 +115,10 @@ nav ul li a:hover {
 }
 
 
-nav.stroke ul li a,
-nav.fill ul li a {
+nav.stroke ul li a{
   position: relative;
 }
-nav.stroke ul li a:after,
-nav.fill ul li a:after {
+nav.stroke ul li a:after{
   position: absolute;
   bottom: 0;
   left: 0;
@@ -134,28 +132,6 @@ nav.fill ul li a:after {
 }
 nav.stroke ul li a:hover:after {
   width: 100%;
-}
-
-nav.fill ul li a {
-  transition: all 2s;
-}
-
-nav.fill ul li a:after {
-  text-align: left;
-  content: '.';
-  margin: 0;
-  opacity: 0;
-}
-nav.fill ul li a:hover {
-  color: #fff;
-  z-index: 1;
-}
-nav.fill ul li a:hover:after {
-  z-index: -10;
-  animation: fill 1s forwards;
-  -webkit-animation: fill 1s forwards;
-  -moz-animation: fill 1s forwards;
-  opacity: 1;
 }
 
 
@@ -195,7 +171,7 @@ a:hover{
   width: 100%;
   height: auto;
   margin: 0 auto;
-  margin-top: 20%;
+  margin-top: 10%;
   border-radius: 15px;
   box-shadow: 0 10px 50px 0px rgb(158, 158, 158);
   background-color: rgb(255, 255, 255);
@@ -247,4 +223,19 @@ a:hover{
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+}
+
+.dropdown-menu{
+  margin-top:10px;
+  background-color: rgb(65, 65, 65);
+}
+
+.dropdown-menu a{
+  color:white;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.dropdown-menu.dropdown-item{
+  border-bottom:1px solid rgb(120,120,120);
 }

@@ -16,7 +16,8 @@ class User < ApplicationRecord
       if password != password_confirmation
       end
     end
-    
+  
+
   has_many :comments
 	has_many :courses, through: :comments
 

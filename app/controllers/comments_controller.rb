@@ -1,16 +1,12 @@
 class CommentsController < ApplicationController
 	before_action :check_sign_in
-
-
-
 	def index
-			#render json: params
-			@id = params[:format]
-			if @id != nil
-				@comments = Comment.where(course_id: params[:format])
-			else
-				@comments = Comment.all
-			end
+		@id = params[:format]
+		if @id != nil
+			@comments = Comment.where(course_id: params[:format])
+		else
+			@comments = Comment.all
+		end
 	end
 
 	def new
@@ -26,9 +22,11 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		
+
+		#render json: params
 
 		@user=current_user
+
 		
 		@id = params[:course_id]
 		@course = Course.find_by(id: @id)
@@ -36,6 +34,7 @@ class CommentsController < ApplicationController
 		@comment = Comment.new(comment_params)
 		@comment.update(user:@user, course:@course)
 		@comment.courseid = @course.name
+
 		@comment.username = @user.name
 		#valid score
 		#score will change to option bottum
@@ -48,6 +47,7 @@ class CommentsController < ApplicationController
 
 		if @comment.save	#success
 			redirect_to comments_path(@id), notice: "make new comment"#finally redirect to course page
+
 		else				#fail
 			render :new
 		end
@@ -73,10 +73,12 @@ class CommentsController < ApplicationController
 		@comment.usefulness_score=@comment.usefulness_score/2
 
 
+
 		if @comment.save	#success
 			redirect_to comments_path(@id), notice: "make new comment"#finally redirect to course page
+
 		else				#fail
-			render :new
+			#render :new
 		end
 	end
 
@@ -90,7 +92,10 @@ class CommentsController < ApplicationController
 
 	private
 	def comment_params
+
 		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
+
+
 	end
 
 	

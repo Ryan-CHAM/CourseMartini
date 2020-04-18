@@ -1,0 +1,64 @@
+<h1>Thank you for your proposed course!</h1>
+<h2>We will review it ASAP</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%# 1 of 3 %>
+    </div>
+    <div class="col-6">
+      <p>
+        <strong>Name:</strong>
+        <%= @proposal.name %>
+      </p>
+
+      <p>
+        <strong>Code:</strong>
+        <%= @proposal.code %>
+      </p>
+
+      <p>
+        <strong>Subject:</strong>
+        <%= @proposal.subject %>
+      </p>
+
+      <p>
+        <strong>Faculty:</strong>
+        <%= @proposal.faculty %>
+      </p>
+
+      <p>
+        <strong>Instructor:</strong>
+        <%= @proposal.instructor %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @proposal.description %>
+      </p>
+
+      <p>
+        <strong>Book:</strong>
+        <%= @proposal.book %>
+      </p>
+
+      <p>
+        <strong>Url:</strong>
+        <%= @proposal.url %>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <%= @proposal.status %>
+      </p>
+
+      <%= link_to 'Edit', edit_proposal_path(@proposal) %> |
+      <%= link_to 'Back', proposals_path %>
+
+    </div>
+    <div class="col">
+      <%# 3 of 3 %>
+    </div>
+  </div>
+  
+</div>

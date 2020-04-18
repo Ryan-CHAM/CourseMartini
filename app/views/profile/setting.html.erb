@@ -1,0 +1,38 @@
+<div class="gradient2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="user_form">
+                    <h2 style="margin-bottom: -10px; text-transform: uppercase"><strong>Setting</strong></h2>
+                    <div class="col-lg-8 offset-lg-2" >   
+                        <% if @user.errors.any? %>
+                                <div class="signup_alert" role="alert">
+                                        <p>Name is either invalid or taken</p>
+                                </div>
+                            <% end %>
+                        <div class="text_box">
+                            <strong>Registered email</strong><br>
+                            <p style="font-size:12 margin-top:5px"><%= @user.email%></p>
+                        </div>
+                        <%= form_tag("/profile/update", method: "post") do %>                   
+                            <div class="text_box">
+                                <strong>User name</strong><br>
+                                <input type="text" name="name" id="name" style="margin-top:5px" placeholder=<%=@user.name%>>
+                            </div>
+
+                            <div class="text_box">
+                                <strong>About me</strong><br>
+                                <textarea rows="3" name="intro" id="intro" maxlength=150 placeholer=<%@user.intro%>></textarea>
+                            </div>
+
+                        <button name="button" type="submit" class="btn btn-primary btn-lg btn-block">Save changes</button>
+                        <%end%>
+                        <br>
+                        <p style="text-align: right"><a href="">View all my comments</a></p>
+                        <br>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

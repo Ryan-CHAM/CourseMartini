@@ -145,6 +145,7 @@
   <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
   <p><br></p>
   <p>show comments here</p>
+
   <% @comments.each do |comment| %>
    
     <div class="card border-dark mb-3" style="max-width: 100rem;">   
@@ -204,6 +205,7 @@
 
 
 
+
   </div>
 
 
@@ -243,7 +245,9 @@
 <p><br></p>
 <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
 <%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
+
 <%= link_to 'Add Comment', new_comment_path(@course), :class=>"btn btn-outline-primary" %>
+
     </div>
     <div class="col">
       <%# 3 of 3 %>

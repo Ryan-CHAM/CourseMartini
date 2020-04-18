@@ -78,7 +78,7 @@
       <div class="card-body text-primary">
         <h5 class="card-title"><%= @course.workload %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="@course.workload" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@
       <div class="card-body text-success">
         <h5 class="card-title"><%= @course.quality %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow=@course.quality aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="@course.quality" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
       <div class="card-body text-info">
         <h5 class="card-title"><%= @course.usefulness %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow=@course.usefulness aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="@course.usefulness" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@
       <div class="card-body text-danger">
         <h5 class="card-title"><%= @course.difficulty %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow=@course.difficulty aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="@course.difficulty" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>
@@ -119,7 +119,7 @@
       <div class="card-body text-warning">
         <h5 class="card-title"><%= @course.workload %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="@course.workload" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>
@@ -127,9 +127,9 @@
     <div class="card border-dark mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Average GPA</strong></div>
       <div class="card-body text-dark">
-        <h5 class="card-title"><%= @course.gpa %> / 4</h5>
+        <h5 class="card-title"><%= @course.gpa.round(1) %> / 4</h5>
         <div class="progress">
-          <div class="progress-bar bg-dark" role="progressbar" style="width: 25%" aria-valuenow=@course.gpa aria-valuemin="0" aria-valuemax="4"></div>
+          <div class="progress-bar bg-dark" role="progressbar" style="width: 25%" aria-valuenow="@course.gpa" aria-valuemin="0" aria-valuemax="4"></div>
         </div>
       </div>
     </div>
@@ -145,6 +145,65 @@
   <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
   <p><br></p>
   <p>show comments here</p>
+  <% @comments.each do |comment| %>
+   
+    <div class="card border-dark mb-3" style="max-width: 100rem;">   
+    
+    <div class="card-header"><strong><%= comment.username %></strong></div>
+      <div class="card-body text-dark"><%= comment.posts %></div>
+
+      
+      <div class="card-body text-dark">
+        <h5 class="card-title">Overall: <%= comment.score %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-primary" role="progressbar" style="width: <%= comment.score/5*100 %>%" aria-valuenow="comment.score" aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+
+
+      <div class="card-body text-dark">
+        <h5 class="card-title">Teaching Quality: <%= comment.teachingQuality_score %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar" style="width: <%= comment.teachingQuality_score/5*100 %>%" aria-valuenow="comment.teachingQuality_score" aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+
+      <div class="card-body text-dark">
+        <h5 class="card-title">Usefulness: <%= comment.usefulness_score %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-info" role="progressbar" style="width: <%= comment.usefulness_score/5*100 %>%" aria-valuenow="comment.usefulness_score" aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+
+      <div class="card-body text-dark">
+        <h5 class="card-title">Difficulty: <%= comment.difficulty_score %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-danger" role="progressbar" style="width: <%= comment.difficulty_score/5*100 %>%" aria-valuenow="comment.difficulty_score" aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+
+      <div class="card-body text-dark">
+        <h5 class="card-title">Workload: <%= comment.workload_score %> / 5</h5>
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: <%= comment.workload_score/5*100 %>%" aria-valuenow="comment.workload_score" aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+
+      <div class="card-body text-dark">
+        <h5 class="card-title">GPA: <%= comment.gpa %> / 4</h5>
+        <div class="progress">
+          <div class="progress-bar bg-dark" role="progressbar" style="width: <%= comment.gpa/4*100 %>%" aria-valuenow="comment.gpa" aria-valuemin="0" aria-valuemax="4"></div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  <% end %>
+
+
+
   </div>
 
 
@@ -184,7 +243,7 @@
 <p><br></p>
 <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
 <%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
-<%# <%= link_to 'Show Comment', comments_path(@course), :class=>"btn btn-outline-primary" %>
+<%= link_to 'Add Comment', new_comment_path(@course), :class=>"btn btn-outline-primary" %>
     </div>
     <div class="col">
       <%# 3 of 3 %>

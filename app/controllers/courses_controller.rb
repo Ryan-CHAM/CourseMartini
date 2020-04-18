@@ -57,10 +57,11 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
+    redirect_to root_path unless current_user&.admin?
 
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'Course was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -68,12 +69,6 @@ class CoursesController < ApplicationController
   def search
       @courses = Course.search(params[:search]).page(params[:page]).per(5)
   end
-
-
-
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -83,7 +78,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url)
+      params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url, :instructor)
     end
 
 end

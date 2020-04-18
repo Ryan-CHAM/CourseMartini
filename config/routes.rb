@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :proposals
   get 'homepage/home'
   root 'homepage#home'
   get 'homepage/about'

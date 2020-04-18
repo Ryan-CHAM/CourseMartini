@@ -17,8 +17,12 @@ class ProfileController < ApplicationController
         @user = current_user
         @name = @user.name
         @intro = @user.intro
-        @user.name = params[:name]
-        @user.intro = params[:intro]
+        unless params[:name] == "" 
+            @user.name = params[:name] 
+        end
+        unless params[:intro] == ""
+            @user.intro = params[:intro] 
+        end
         if @user.save
             redirect_to "/profile/#{@user.id}",
             :notice => "Update successful!"

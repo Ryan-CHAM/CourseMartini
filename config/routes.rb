@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   resources :proposals
-  get 'homepage/home'
-  root 'homepage#home'
+  get 'homepage/index'
+  root 'homepage#index'
+  get 'homepage' => 'homepage#index'
   get 'homepage/about'
   get 'homepage/contact'
-  get 'homepage' => 'homepage#home'
   get 'welcome' => 'welcome#index'
   get 'admin/index'
   get 'admin' => 'admin#index'

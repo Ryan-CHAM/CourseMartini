@@ -15,8 +15,8 @@
 </head>
 
 <body>
-	<nav class="navbar stroke navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="/homepage/home" style="padding-top:2px;"><strong>CourseMartini</strong></a>
+	<nav class="navbar stroke navbar-fixed-top navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="/homepage" style="padding-top:2px;"><strong>CourseMartini</strong></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
 							<% if current_user&.admin? %>
 								<a class="dropdown-item" href="/admin/index">Admin Page</a>
 							<% end %>
-							<a rel="nofollow" data-method="delete" href="/users/sign_out" class="dropdown-item">Logout</a>
+							<a rel="nofollow" data-method="delete" href="/users/sign_out" class="dropdown-item">Sign out</a>
 						</div>
 					</li>
 				<% else %>

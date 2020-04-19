@@ -6,7 +6,6 @@ class ProfileController < ApplicationController
         end
         @count = Comment.where(:username => @user.name).count
         @comment = Comment.where(:username => @user.name).last
-        @course = Course.find(@comment.course_id)
 
     end
 

@@ -23,7 +23,7 @@
                                 <strong>Latest comment</strong><br><br>
                                 <div class="card" style="border:0px">
                                     <div class="card border-dark mb-3" style="max-width: 100rem;">   
-                                        <div class="card-header" style="margin-bottom:0px"><strong><a href="/profile/<%=@comment.course_id%>" style="color:black"><%= @course.code%>&nbsp<%=@comment.courseid %></a></strong></div>
+                                        <div class="card-header" style="margin-bottom:0px"><strong><a href="/profile/<%=@comment.course_id%>" style="color:black"><%=@comment.coursecode %></a></strong></div>
                                         <div class="card-body text-dark" style="margin-top:-10px">
                                             <p><%= @comment.posts %></p>
                                             <p>Overall: <%= @comment.score %> / 5</p>

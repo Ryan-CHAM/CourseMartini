@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'profile/setting'
   get 'profile/update', to: redirect("/profile/setting")
   get 'profile/:id' => 'profile#index'
+  get 'profile/comments/:id' => 'profile#comments'
   post 'profile/update'
   resources :courses
   get "/search", to: "courses#search"

@@ -1,0 +1,67 @@
+<h2 style="margin-bottom: 10px; text-transform: uppercase"><strong><%= @user.name%>'s Comments</strong></h2>
+<div class="col-lg-8 offset-lg-2">
+<div class="row">
+	<% @comments.each do |comment| %>
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card border-dark mb-3" style="max-width: 100rem;">
+				<div class="card-header"><strong><a href="/courses/<%=comment.course_id%>" style="color:black"><%= comment.courseid%></a></strong></div>
+				<div class="card-body text-dark"><%= comment.posts %></div>
+				<div class="card-body text-dark">
+					<h5 class="card-title">Overall: <%= comment.score %> / 5</h5>
+					<div class="progress">
+						<div class="progress-bar bg-primary" role="progressbar"
+							style="width: <%= comment.score/5*100 %>%" aria-valuenow=comment.score aria-valuemin="0"
+							aria-valuemax="4"></div>
+					</div>
+				</div>
+
+				<div class="card-body text-dark">
+					<h5 class="card-title">Teaching Quality: <%= comment.teachingQuality_score %> / 5</h5>
+					<div class="progress">
+						<div class="progress-bar bg-success" role="progressbar"
+							style="width: <%= comment.teachingQuality_score/5*100 %>%"
+							aria-valuenow=comment.teachingQuality_score aria-valuemin="0" aria-valuemax="4"></div>
+					</div>
+				</div>
+
+				<div class="card-body text-dark">
+					<h5 class="card-title">Usefulness: <%= comment.usefulness_score %> / 5</h5>
+					<div class="progress">
+						<div class="progress-bar bg-info" role="progressbar"
+							style="width: <%= comment.usefulness_score/5*100 %>%" aria-valuenow=comment.usefulness_score
+							aria-valuemin="0" aria-valuemax="4"></div>
+					</div>
+				</div>
+
+				<div class="card-body text-dark">
+					<h5 class="card-title">Difficulty: <%= comment.difficulty_score %> / 5</h5>
+					<div class="progress">
+						<div class="progress-bar bg-danger" role="progressbar"
+							style="width: <%= comment.difficulty_score/5*100 %>%" aria-valuenow=comment.difficulty_score
+							aria-valuemin="0" aria-valuemax="4"></div>
+					</div>
+				</div>
+
+				<div class="card-body text-dark">
+					<h5 class="card-title">Workload: <%= comment.workload_score %> / 5</h5>
+					<div class="progress">
+						<div class="progress-bar bg-warning" role="progressbar"
+							style="width: <%= comment.workload_score/5*100 %>%" aria-valuenow=comment.workload_score
+							aria-valuemin="0" aria-valuemax="4"></div>
+					</div>
+				</div>
+
+				<div class="card-body text-dark">
+					<h5 class="card-title">GPA: <%= comment.gpa %> / 4</h5>
+					<div class="progress">
+						<div class="progress-bar bg-dark" role="progressbar" style="width: <%= comment.gpa/4*100 %>%"
+							aria-valuenow=comment.gpa aria-valuemin="0" aria-valuemax="4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
+</div>

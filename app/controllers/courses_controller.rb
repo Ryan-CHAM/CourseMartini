@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @comments=Comment.where(course_id: params[:id])
+    @comments=Comment.where(course_id: params[:id]).reorder(id: :desc)
   end
 
   # GET /courses/new

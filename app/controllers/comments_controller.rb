@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
 
 		@comment = Comment.new(comment_params)
 		@comment.update(user:@user, course:@course)
-		@comment.courseid = @course.name
+		@comment.courseid = @course.code
 
 		@comment.username = @user.name
 		#valid score

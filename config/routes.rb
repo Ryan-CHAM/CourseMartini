@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'profile/update'
   resources :courses
   get "/search", to: "courses#search"
+  get "/random", to: "courses#random"
   post 'comments' => 'comments#create'
   resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -70,6 +70,10 @@ class CoursesController < ApplicationController
   def search
       @courses = Course.search(params[:search]).page(params[:page]).per(5)
   end
+  
+  def random
+      @courses = Course.random
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

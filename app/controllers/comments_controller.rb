@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
 	before_action :check_sign_in
 	def index
 		redirect_to root_path unless current_user&.admin? 
-		@comments = Comment.all
-		
+		if params[:format]==nil
+			@comments = Comment.all
+		else
+			@id=params[:format]
+			@comments=Comment.where(course_id: @id)	
+		end		
 	end
 
 	def new

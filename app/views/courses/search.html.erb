@@ -25,7 +25,27 @@
       <button type="button" class="btn btn-outline-info">Give me random courses!</button>
     </a>
   </div>
+  <hr>
+
+
+<!-- New Proposal -->
+<% if user_signed_in? %>
+  <div class="text-center">
+    <a href="/proposals/new">
+      <button type="button" class="btn btn-outline-secondary">Didn't find you course? Try to propose one!</button>
+    </a>
+  </div>
+<% else %>
+  <div class="text-center">
+    <button type="button" class="btn btn-outline-secondary disabled">Didn't find you course? Try to propose one!</button>
+  </div>
 <br>
+  <div class="alert alert-warning" role="alert" style="margin: 0% 40%">
+  Please <a href="/users/sign_in" class="alert-link" >sign in</a> or <a href="/users/sign_up" class="alert-link">sign up</a> first.
+</div>
+<% end %>
+
+
 <hr>
 <br>
 <% @courses.each do |course| %>
@@ -57,6 +77,6 @@
 </div>
 <br>
 <% end %>
-<div class="container pagination justify-content-center", style="margin:0% 0% 0% 67%" >
+<div class="container pagination", style="margin:0% 0% 0% 16%" >
   <%= paginate @courses, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
 </div>

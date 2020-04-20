@@ -1,68 +1,54 @@
-<h1>Courses Database (Administrator's View)</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Sub</th>
-      <th>Faculty</th>
-      <th>Prof</th>
-      <th>Des</th>
-      
-      <th>Work</th>
-      <th>Diff</th>
-      <th>Qual</th>
-      <th>Use</th>
-      <th>GPA</th>
-      <th>All</th>
-      <th>Num</th>
+    <h1>Courses Database (Administrator's View)</h1>
 
-      <th>Book</th>
-      <th>URL</th>
-      <th>Actions</th>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Sub</th>
+          <th>Faculty</th>
+          <th>Prof</th>
+          <th>Des</th>
+          <th>No. comments</th>
 
-      <%# <th colspan="3"></th> %>
-    </tr>
-  </thead>
+          <th>Book</th>
+          <th>URL</th>
+          <th>Actions</th>
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.id %></td>
-        <td><%= course.code %></td>
-        <td><%= course.name %></td>
-        <td><%= course.subject %></td>
-        <td><%= course.faculty %></td>
-        <td><%= course.instructor %></td>
-        <td><%= course.description %></td>
+          <%# <th colspan="3"></th> %>
+        </tr>
+      </thead>
 
-        <td><%= course.workload %></td>
-        <td><%= course.difficulty %></td>
-        <td><%= course.quality %></td>
-        <td><%= course.usefulness %></td>
-        <td><%= course.gpa %></td>
-        <td><%= course.overall %></td>
-        <td><%= course.n_comments %></td>
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <td><%= course.id %></td>
+            <td><%= course.code %></td>
+            <td><%= course.name %></td>
+            <td><%= course.subject %></td>
+            <td><%= course.faculty %></td>
+            <td><%= course.instructor %></td>
+            <td><%= course.description %></td>
 
-        <td><%= course.book %></td>
-        <td><%= course.url %></td>
+            <td><%= course.n_comments %></td>
 
-        <td>
-          <%= link_to 'Show', course, :class=>"btn btn-outline-primary" %>
-          <%= link_to 'Edit', edit_course_path(course), :class=>"btn btn-outline-primary" %>
-          <%= button_to 'Delete', course_path(course), :method => :delete,
-              data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <td><%= course.book %></td>
+            <td><%= course.url %></td>
 
-<br>
+            <td>
+              <%= link_to 'Show', course, :class=>"btn btn-outline-primary" %>
+              <%= link_to 'Edit', edit_course_path(course), :class=>"btn btn-outline-primary" %>
+              <%= button_to 'Delete', course_path(course), :method => :delete,
+                  data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
 
 
-<%= link_to 'New Course', new_course_path, :class=>"btn btn-outline-primary"%>
-
-
+    <%= link_to 'New Course', new_course_path, :class=>"btn btn-outline-primary"%>

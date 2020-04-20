@@ -1,4 +1,4 @@
-<div class="gradient2">
+<div class="bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
@@ -20,20 +20,25 @@
                             </div>
 
                             <div class="text_box">
-                                <strong>Latest comment</strong><br><br>
-                                <div class="card" style="border:0px">
-                                    <div class="card border-dark mb-3" style="max-width: 100rem;">   
-                                        <div class="card-header" style="margin-bottom:0px"><strong><a href="/profile/<%=@comment.course_id%>" style="color:black"><%=@comment.courseid %></a></strong></div>
-                                        <div class="card-body text-dark" style="margin-top:-10px">
-                                            <p><%= @comment.posts %></p>
-                                            <p>Overall: <%= @comment.score %> / 5</p>
-                                            <p>Teaching Quality: <%= @comment.teachingQuality_score %> / 5</p>
-                                            <p>Usefulness: <%= @comment.usefulness_score %> / 5</p>
-                                            <p>Difficulty: <%= @comment.difficulty_score %> / 5</p>
-                                            <p>Workload: <%= @comment.workload_score %> / 5</p>
-                                            <p>GPA: <%= @comment.gpa %> / 4</p>
+                                <strong>Latest comment</strong><br>
+                                <%unless @comment == nil%>
+                                    <br>
+                                    <div class="card" style="border:0px">
+                                        <div class="card border-dark mb-3" style="max-width: 100rem;">   
+                                            <div class="card-header" style="margin-bottom:0px"><strong><a href="/profile/<%=@comment.course_id%>" style="color:black"><%=@comment.courseid %></a></strong></div>
+                                            <div class="card-body text-dark" style="margin-top:-10px">
+                                                <p><%= @comment.posts %></p>
+                                                <p>Overall: <%= @comment.score %> / 5</p>
+                                                <p>Teaching Quality: <%= @comment.teachingQuality_score %> / 5</p>
+                                                <p>Usefulness: <%= @comment.usefulness_score %> / 5</p>
+                                                <p>Difficulty: <%= @comment.difficulty_score %> / 5</p>
+                                                <p>Workload: <%= @comment.workload_score %> / 5</p>
+                                                <p>GPA: <%= @comment.gpa %> / 4</p>
+                                        </div>
                                     </div>
-                                </div>
+                                <%else%>
+                                    <p>The user has no comments yet</p>
+                                <% end %>
                             </div>
                             <br>
                             <p style="text-align: right"><a href="/profile/comments/<%=@user.id%>">View all his comments</a></p>

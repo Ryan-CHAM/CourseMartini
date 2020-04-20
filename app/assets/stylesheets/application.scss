@@ -141,14 +141,17 @@ nav.stroke ul li a:hover:after {
 .gradient2{
   background-image: linear-gradient(to top ,rgba(240, 172, 127, 0.3),rgb(255, 255, 255));
   width: 100%;
-  height: 100%;
 }
 
-html, body {
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+html, body{
   font-size: 90%;
+  margin-bottom:60px;
   font-family: 'Roboto', sans-serif;
-  width: 100%;
-  height: 100%;
 }
 
 .btn-outline-light:hover{
@@ -241,4 +244,26 @@ a:hover{
 
 .dropdown-menu.dropdown-item{
   border-bottom:1px solid rgb(120,120,120);
+}
+
+.end{ 
+  height:60px;
+  width: 100%;
+  background-color:rgb(78, 78, 78);
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right:0;
+}
+
+.end p{
+  padding-top:25px;
+  text-align: center;
+  color:white;
+}
+
+.bg{
+  background-color: rgb(232,232,232);
+  margin-top:0px;
+  min-height:90vh;
 }

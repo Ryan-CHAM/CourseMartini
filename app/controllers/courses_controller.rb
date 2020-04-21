@@ -17,8 +17,22 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     redirect_to root_path unless current_user&.admin? 
-    render json: params
+    if params[:format]
+      @proposal = Proposal.find(params[:format])
+      @course = Course.new
+      @course.code = @proposal.code
+      @course.name = @proposal.name
+      @course.subject = @proposal.subject
+      @course.faculty = @proposal.faculty
+      @course.instructor = @proposal.instructor
+      @course.description = @proposal.description
+      @course.book = @proposal.book
+      @course.url = @proposal.url
+      @flag = 1
+    else
     @course = Course.new
+    @flag = 0
+    end
   end
 
   # GET /courses/1/edit
@@ -92,8 +106,5 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url, :instructor)
     end
 
-    def proposal_params
-      params.require(:proposal).permit(:name, :code, :subject, :faculty, :instructor, :description, :book, :url, :status)
-    end
 
 end

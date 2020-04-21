@@ -8,8 +8,11 @@
     <div class="col-6">
       <%# 2 of 3 (wider) %>
       <%= render 'form', course: @course %>
-
-      <%= link_to 'Back', courses_path %>
+      <%if @flag==1%>
+        <%= link_to 'Back', proposals_path%>
+      <%else%>
+        <%= link_to 'Back', courses_path %>
+      <%end%>
     </div>
     <div class="col">
       <%# 3 of 3 %>

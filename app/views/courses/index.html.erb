@@ -59,10 +59,10 @@ table {
             <td><%= course.url %></td>
 
             <td>
-              <%= link_to 'Show', course, :class=>"btn btn-outline-primary btn-block" %>
-              <%= link_to 'Edit', edit_course_path(course), :class=>"btn btn-outline-primary btn-block" %>
+              <%= link_to 'Show', course, :class=>"btn btn-outline-primary btn-block btn-sm" %>
+              <%= link_to 'Edit', edit_course_path(course), :class=>"btn btn-outline-primary btn-block btn-sm" %>
               <%= link_to 'Del', course_path(course), :method => :delete,
-                  data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger btn-block" %>
+                  data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger btn-block btn-sm" %>
             </td>
           </tr>
         <% end %>
@@ -71,7 +71,7 @@ table {
 
     <br>
 
-
+<div class="text-center">
     <%= link_to 'New Course', new_course_path, :class=>"btn btn-outline-primary"%>
     <%= link_to 'Proposals ', "/proposals", :class=>"btn btn-outline-primary"%>
-    <br><br><br>
+</div>

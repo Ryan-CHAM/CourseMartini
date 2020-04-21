@@ -29,6 +29,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.code = @course.code.upcase
 
     respond_to do |format|
       if @course.save
@@ -68,7 +69,7 @@ class CoursesController < ApplicationController
   end
   
   def search
-      @courses = Course.search(params[:search]).page(params[:page]).per(5)
+      @courses = Course.search(params[:search].upcase).page(params[:page]).per(5)
   end
   
   def random

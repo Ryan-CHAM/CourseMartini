@@ -30,9 +30,9 @@
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   <p><br></p>
 
-  <div class="card border-info mb-3" style="max-width: 100rem;">   
+  <div class="card border-danger mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Subject</strong></div>
-    <div class="card-body text-info">
+    <div class="card-body text-danger">
       <%# <h5 class="card-title">Primary card title</h5> %>
       <p class="card-text"><%= @course.subject %></p>
     </div>
@@ -48,9 +48,9 @@
   </div>
 
     
-  <div class="card border-danger mb-3" style="max-width: 100rem;">   
+  <div class="card border-info mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Instructor</strong></div>
-    <div class="card-body text-danger">
+    <div class="card-body text-info">
       <%# <h5 class="card-title">Primary card title</h5> %>
       <p class="card-text"><%= @course.instructor %></p>
     </div>
@@ -140,57 +140,67 @@
 
   <div class="tab-pane fade" id="trend" role="tabpanel" aria-labelledby="trend-tab">
   <p><br></p>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['User', 'Overall', 'Teaching Quality','Workload','Usefulness','Difficulty'],
-        ['test1',   1,           2,               3,         4,                 5],
-        ['test2',   4,           5,               3,         5,                 4],
-        ['test3',   3,           3,               4,         4,                 5],
-        ['test4',   2,           3,               4,         5,                 3],
-        ['test5',   3,           3,               4,         5,                 3],
-        ['test6',   5,           1,               2,         3,                 4], 
-        ['test7',   3,           5,               4,         3,                 2],
-        ['test8',   4,           4,               3,         3,                 3],
-        ['test9',   4,           5,               1,         4,                 2]
-      ]);
+  <div class="card border-dark mb-3" style="max-width: 100rem;">
+    <div class="card-header">Latest Ratings</div>
+    <div class="card-body">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
 
-      var options = {
-        title: 'Trends',
-        curveType: 'function',
-        legend: { position: 'right' }
-        
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['User', 'Overall', 'Teaching Quality','Workload','Usefulness','Difficulty'],
+              ['test1',   1,           2,               3,         4,                 5],
+              ['test2',   4,           5,               3,         5,                 4],
+              ['test3',   3,           3,               4,         4,                 5],
+              ['test4',   2,           3,               4,         5,                 3],
+              ['test5',   3,           3,               4,         5,                 3],
+              ['test6',   5,           1,               2,         3,                 4], 
+              ['test7',   3,           5,               4,         3,                 2],
+              ['test8',   4,           4,               3,         3,                 3],
+              ['test9',   4,           5,               1,         4,                 2]
+            ]);
 
-      };
+            var options = {
+              curveType: 'function',
+              legend: { 
+                position: 'right',
+                alignment:'center'
+              },
+              width: 650,
+              height: 400,
+              chartArea: {
+                width: 450,
+                left:50,
+                top:40, 
+                height:300
+              },
+            };
 
-      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-      chart.draw(data, options);
-    }
-  </script>
-
-
-  <div id="curve_chart" style="width: 900px; height: 500px" ></div>
+            chart.draw(data, options);
+          }
+        </script>
 
 
-
-
+        <div id="curve_chart" style="width: 900px; height: 500px" ></div>
+        </div>
+    </div>
   </div>
+
+ 
 
 
   <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
   <p><br></p>
-  <p>show comments here</p>
-  <div class="row">
+  
+  <div class="card-columns">
   
       <% @comments.each do |comment| %>
 
-
-      <div class="col-sm-6">
         <div class="card">
        
         <div class="card border-dark mb-3" style="max-width: 100rem;">   
@@ -200,51 +210,49 @@
 
           
           <div class="card-body text-dark">
-            <h5 class="card-title">Overall: <%= comment.score %> / 5</h5>
+            
             <div class="progress">
               <div class="progress-bar bg-primary" role="progressbar" style="width: <%= comment.score*20 %>%" aria-valuenow=comment.score aria-valuemin="0" aria-valuemax="4"></div>
             </div>
-          </div>
+            <p class="card-title">Overall: <%= comment.score %> / 5</p>
+            <p><br></p>
 
-
-          <div class="card-body text-dark">
-            <h5 class="card-title">Teaching Quality: <%= comment.teachingQuality_score %> / 5</h5>
+            
             <div class="progress">
               <div class="progress-bar bg-success" role="progressbar" style="width: <%= comment.teachingQuality_score*20 %>%" aria-valuenow=comment.teachingQuality_score aria-valuemin="0" aria-valuemax="4"></div>
             </div>
-          </div>
+            <p class="card-text">Teaching Quality: <%= comment.teachingQuality_score %> / 5</p>
+            <p><br></p>
 
-          <div class="card-body text-dark">
-            <h5 class="card-title">Usefulness: <%= comment.usefulness_score %> / 5</h5>
+            
             <div class="progress">
               <div class="progress-bar bg-info" role="progressbar" style="width: <%= comment.usefulness_score*20 %>%" aria-valuenow=comment.usefulness_score aria-valuemin="0" aria-valuemax="4"></div>
             </div>
-          </div>
+            <p class="card-text">Usefulness: <%= comment.usefulness_score %> / 5</p>
+            <p><br></p>
 
-          <div class="card-body text-dark">
-            <h5 class="card-title">Difficulty: <%= comment.difficulty_score %> / 5</h5>
+           
             <div class="progress">
               <div class="progress-bar bg-danger" role="progressbar" style="width: <%= comment.difficulty_score*20 %>%" aria-valuenow=comment.difficulty_score aria-valuemin="0" aria-valuemax="4"></div>
             </div>
-          </div>
+            <p class="card-text">Difficulty: <%= comment.difficulty_score %> / 5</p>
+            <p><br></p>
 
-          <div class="card-body text-dark">
-            <h5 class="card-title">Workload: <%= comment.workload_score %> / 5</h5>
+            
             <div class="progress">
               <div class="progress-bar bg-warning" role="progressbar" style="width: <%= comment.workload_score*20 %>%" aria-valuenow=comment.workload_score aria-valuemin="0" aria-valuemax="4"></div>
             </div>
-          </div>
-
-          <div class="card-body text-dark">
-            <h5 class="card-title">GPA: <%= comment.gpa %> / 4</h5>
+            <p class="card-text">Workload: <%= comment.workload_score %> / 5</p>
+            <p><br></p>
+            
             <div class="progress">
               <div class="progress-bar bg-dark" role="progressbar" style="width: <%= comment.gpa*25 %>%" aria-valuenow=comment.gpa aria-valuemin="0" aria-valuemax="4"></div>
             </div>
+            <p class="card-text">GPA: <%= comment.gpa %> / 4</p>
           </div>
         </div>
 
       </div>
-    </div>
 
 
     <% end %>
@@ -262,7 +270,7 @@
     </div> %>
 
 
-  <div class="card border-dark mb-3" style="max-width: 100rem;">   
+  <div class="card bg-light mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Textbook</strong></div>
     <div class="card-body text-dark">
       <%# <h5 class="card-title">Primary card title</h5> %>
@@ -271,7 +279,7 @@
   </div>
 
 
-  <div class="card border-dark mb-3" style="max-width: 100rem;">   
+  <div class="card bg-light mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Course Website</strong></div>
     <div class="card-body text-dark">
       <%# <h5 class="card-title">Primary card title</h5> %>

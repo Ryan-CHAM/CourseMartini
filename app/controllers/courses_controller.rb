@@ -17,7 +17,22 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     redirect_to root_path unless current_user&.admin? 
+    if params[:format]
+      @proposal = Proposal.find(params[:format])
+      @course = Course.new
+      @course.code = @proposal.code
+      @course.name = @proposal.name
+      @course.subject = @proposal.subject
+      @course.faculty = @proposal.faculty
+      @course.instructor = @proposal.instructor
+      @course.description = @proposal.description
+      @course.book = @proposal.book
+      @course.url = @proposal.url
+      @flag = 1
+    else
     @course = Course.new
+    @flag = 0
+    end
   end
 
   # GET /courses/1/edit
@@ -79,6 +94,7 @@ class CoursesController < ApplicationController
       @courses = Course.random
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -89,5 +105,6 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url, :instructor)
     end
+
 
 end

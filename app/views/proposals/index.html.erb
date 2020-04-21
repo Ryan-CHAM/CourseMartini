@@ -1,4 +1,4 @@
-<h1>Your Proposals</h1>
+<h1>Proposals to be Processed</h1>
 
 <div class="container">
   <div class="row">
@@ -38,9 +38,9 @@
               <td><%= proposal.url %></td>
               <td><%= proposal.status %></td>
               <td>
-                <%= link_to 'Edit', edit_proposal_path(proposal), :class=>"btn btn-outline-primary" %>
-                <%= button_to 'Delete', proposal_path(proposal), :method => :delete,
-                    data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger" %>
+                <%= link_to 'Process', new_course_path(proposal), :class=>"btn btn-outline-primary btn-sm btn-block" %><br>
+                <%= button_to 'Ignore ', proposal_path(proposal), :method => :delete,
+                    data: { confirm: 'Are you sure?' }, :class=>"btn btn-outline-danger btn-sm btn-block" %>
               </td>
             </tr>
           <% end %>
@@ -49,7 +49,6 @@
 
       <br>
 
-      <%= link_to 'New Proposal', new_proposal_path, :class=>"btn btn-outline-primary"%>
     </div>
     <div class="col">
       <%# 3 of 3 %>

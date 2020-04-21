@@ -1,7 +1,8 @@
 class Course < ApplicationRecord
 	has_many :comments
 	has_many :users, through: :comments
-    
+    validates :code, uniqueness: {case_sensitive: false}
+
     def self.search(search)
         if search
             i = search.size
@@ -17,5 +18,19 @@ class Course < ApplicationRecord
                 Course.where(code: results)
             end
         end
+    end
+    
+    def self.random()
+        random = Array.new
+        random[0] = rand(Course.all.size) + 1
+        random[1] = rand(Course.all.size) + 1
+        until random[1] != random[0]
+            random[1] = rand(Course.all.size) + 1
+        end
+        random[2] = rand(Course.all.size) + 1
+        until random[2] != random[0] && random[2] != random[0]
+            random[2] = rand(Course.all.size) + 1
+        end
+        Course.where(:id => random)
     end
 end

@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 	before_action :check_sign_in
 	def index
-		@id = params[:format]
-		if @id != nil
-			@comments = Comment.where(course_id: params[:format])
-		else
+		redirect_to root_path unless current_user&.admin? 
+		if params[:format]==nil
 			@comments = Comment.all
-		end
+		else
+			@id=params[:format]
+			@comments=Comment.where(course_id: @id)	
+		end		
 	end
 
 	def new
@@ -14,6 +15,9 @@ class CommentsController < ApplicationController
 		$courseidforcomment = params[:format]
 		@id = $courseidforcomment
 		@course = Course.find_by(id: @id)
+		if @course==nil
+			redirect_to root_path
+		end
 		@comment = Comment.new
 		
 		
@@ -33,7 +37,7 @@ class CommentsController < ApplicationController
 
 		@comment = Comment.new(comment_params)
 		@comment.update(user:@user, course:@course)
-		@comment.courseid = @course.name
+		@comment.courseid = @course.code
 
 		@comment.username = @user.name
 		#valid score
@@ -46,7 +50,16 @@ class CommentsController < ApplicationController
 		@comment.usefulness_score=@comment.usefulness_score/2
 
 		if @comment.save	#success
-			redirect_to comments_path(@id), notice: "make new comment"#finally redirect to course page
+			
+			@course.overall = (@course.overall*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.workload = (@course.workload*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.quality = (@course.quality*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.difficulty = (@course.difficulty*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.usefulness = (@course.usefulness*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.gpa = (@course.gpa*@course.n_comments+@comment.gpa)/(@course.n_comments+1)
+			@course.n_comments = @course.n_comments+1
+			@course.save
+			redirect_to @course, notice: "make new comment"#finally redirect to course page
 
 		else				#fail
 			render :new
@@ -75,16 +88,33 @@ class CommentsController < ApplicationController
 
 
 		if @comment.save	#success
-			redirect_to comments_path(@id), notice: "make new comment"#finally redirect to course page
+			@course.overall = (@course.overall*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.workload = (@course.workload*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.quality = (@course.quality*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.difficulty = (@course.difficulty*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.usefulness = (@course.usefulness*@course.n_comments+@comment.score)/(@course.n_comments+1)
+			@course.gpa = (@course.gpa*@course.n_comments+@comment.gpa)/(@course.n_comments+1)
+			@course.n_comments = @course.n_comments+1
+			@course.save
+			redirect_to @course, notice: "make new comment"#finally redirect to course page
 
 		else				#fail
-			#render :new
+			render :new
 		end
 	end
 
 	def destroy
 
 	    @comment = Comment.find_by(id: params[:id])
+	   	@course = Course.find_by(id: @comment.course_id)
+	   	@course.overall = (@course.overall*@course.n_comments-@comment.score)/(@course.n_comments-1)
+		@course.workload = (@course.workload*@course.n_comments-@comment.score)/(@course.n_comments-1)
+		@course.quality = (@course.quality*@course.n_comments-@comment.score)/(@course.n_comments-1)
+		@course.difficulty = (@course.difficulty*@course.n_comments-@comment.score)/(@course.n_comments-1)
+		@course.usefulness = (@course.usefulness*@course.n_comments-@comment.score)/(@course.n_comments-1)
+		@course.gpa = (@course.gpa*@course.n_comments-@comment.gpa)/(@course.n_comments-1)
+	   	@course.n_comments = @course.n_comments-1
+	   	@course.save
 	    @comment.destroy if @comment
 	    redirect_to comments_path, notice: "post delete!"
   	end

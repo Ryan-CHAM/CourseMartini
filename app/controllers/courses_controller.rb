@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @comments=Comment.where(course_id: params[:id]).reorder(id: :desc)
   end
 
   # GET /courses/new
@@ -28,6 +29,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.code = @course.code.upcase
 
     respond_to do |format|
       if @course.save
@@ -67,7 +69,14 @@ class CoursesController < ApplicationController
   end
   
   def search
-      @courses = Course.search(params[:search]).page(params[:page]).per(5)
+      if params[:search] == ""
+        redirect_to "/random"
+      end
+      @courses = Course.where("courses.code LIKE ?", "%#{params[:search].upcase}%").page(params[:page]).per(5)
+  end
+  
+  def random
+      @courses = Course.random
   end
 
   private

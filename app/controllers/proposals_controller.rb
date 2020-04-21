@@ -4,6 +4,7 @@ class ProposalsController < ApplicationController
   # GET /proposals
   # GET /proposals.json
   def index
+      redirect_to root_path unless current_user&.admin?
     @proposals = Proposal.all
   end
 

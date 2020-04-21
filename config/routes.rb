@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   resources :proposals
-  get 'homepage/home'
-  root 'homepage#home'
+  get 'homepage/index'
+  root 'homepage#index'
+  get 'homepage' => 'homepage#index'
   get 'homepage/about'
   get 'homepage/contact'
-  get 'homepage' => 'homepage#home'
   get 'welcome' => 'welcome#index'
   get 'admin/index'
   get 'admin' => 'admin#index'
@@ -13,9 +13,12 @@ Rails.application.routes.draw do
   get 'profile/setting'
   get 'profile/update', to: redirect("/profile/setting")
   get 'profile/:id' => 'profile#index'
+  get 'profile/comments/:id' => 'profile#comments'
   post 'profile/update'
   resources :courses
+  get "/new_proposal_course" => "courses#proposal_new"
   get "/search", to: "courses#search"
+  get "/random", to: "courses#random"
   post 'comments' => 'comments#create'
   resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

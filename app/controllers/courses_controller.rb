@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     redirect_to root_path unless current_user&.admin? 
+    render json: params
     @course = Course.new
   end
 
@@ -79,6 +80,7 @@ class CoursesController < ApplicationController
       @courses = Course.random
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -88,6 +90,10 @@ class CoursesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def course_params
       params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url, :instructor)
+    end
+
+    def proposal_params
+      params.require(:proposal).permit(:name, :code, :subject, :faculty, :instructor, :description, :book, :url, :status)
     end
 
 end

@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
     before_action :first_time_visit?, unless: -> { cookies[:first_visit] }
     protected
     
-
+    add_flash_types :warning
+    
   def first_time_visit?
       unless user_signed_in? && !cookies[:first_visit]
         cookies[:first_visit] = 1

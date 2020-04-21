@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   get 'profile/comments/:id' => 'profile#comments'
   post 'profile/update'
   resources :courses
-  get "/new_proposal_course" => "courses#proposal_new"
   get "/search", to: "courses#search"
   get "/random", to: "courses#random"
   post 'comments' => 'comments#create'

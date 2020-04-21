@@ -48,35 +48,37 @@
 
 <hr>
 <br>
-<% @courses.each do |course| %>
-<div class="card border-info" style="margin:0% 15%">
-  <div class="card-header text-white bg-info">
-    <font size="4"><%= course.code %> <%= course.name %></font>
-    <%= link_to 'Show', course, class:"btn btn-light", style:"float:right" %>
-  </div>
-  <div class="card-body">
-    <font class="card-text" color="#38b9ca" size="4">Overall: <%= course.overall.round(1) %> </font>
-    <font class="card-text" color="grey" size="2">(<%= course.n_comments %> comments)</font><br>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <font class="card-text" size="3">difficulty: <%= course.difficulty.round(1)  %></font>
-        </div>
-        <div class="col-lg-3">
-          <font class="card-text" size="3">workload: <%= course.workload.round(1)  %></font>
-        </div>
-        <div class="col-lg-3">
-          <font class="card-text" size="3">quality: <%= course.quality.round(1)  %></font>
-        </div>
-        <div class="col-lg-3">
-          <font class="card-text" size="3">usefulness: <%= course.usefulness.round(1)  %></font>
+<div style="margin-bottom:150px">
+  <% @courses.each do |course| %>
+  <div class="card border-info" style="margin:0% 15%">
+    <div class="card-header text-white bg-info">
+      <font size="4"><%= course.code %> <%= course.name %></font>
+      <%= link_to 'Show', course, class:"btn btn-light", style:"float:right" %>
+    </div>
+    <div class="card-body">
+      <font class="card-text" color="#38b9ca" size="4">Overall: <%= course.overall.round(1) %> </font>
+      <font class="card-text" color="grey" size="2">(<%= course.n_comments %> comments)</font><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <font class="card-text" size="3">difficulty: <%= course.difficulty.round(1)  %></font>
+          </div>
+          <div class="col-lg-3">
+            <font class="card-text" size="3">workload: <%= course.workload.round(1)  %></font>
+          </div>
+          <div class="col-lg-3">
+            <font class="card-text" size="3">quality: <%= course.quality.round(1)  %></font>
+          </div>
+          <div class="col-lg-3">
+            <font class="card-text" size="3">usefulness: <%= course.usefulness.round(1)  %></font>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<br>
-<% end %>
-<div class="container pagination", style="margin:0% 0% 0% 16%" >
-  <%= paginate @courses, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  <br>
+  <% end %>
+  <div class="container pagination", style="margin:0% 0% 0% 16%" >
+    <%= paginate @courses, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  </div>
 </div>

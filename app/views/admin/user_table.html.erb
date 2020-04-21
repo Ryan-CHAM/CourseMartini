@@ -10,7 +10,9 @@
     <tr>
       <th>User name</th>
       <th>Email</th>
-      <th>Password</th>
+      <th>Hashed Password</th>
+      <th>Is admin</th>
+      <th>Comments</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +21,14 @@
       <td><%= user.name %></td>
       <td><%= user.email %></td>
       <td><%= user.encrypted_password %></td>
+      <%if user&.admin?%>
+        <td>Yes</td>
+      <%else%>
+        <td>No</td>
+      <%end%>
+      <td>
+				<a href="/profile/comments/<%=user.id%>">Manage<a>
+			</td>
     </tr>
     <% end %>
   </tbody>

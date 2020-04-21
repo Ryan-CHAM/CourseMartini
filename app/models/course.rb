@@ -1,7 +1,8 @@
 class Course < ApplicationRecord
 	has_many :comments
 	has_many :users, through: :comments
-    
+    validates :code, uniqueness: {case_sensitive: false}
+
     def self.search(search)
         if search
             i = search.size

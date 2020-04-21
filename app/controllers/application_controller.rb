@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   
   def set_proposal
       @proposal_number = Proposal.all.size
+      @proposal_exist = Proposal.first
   end
 
 end

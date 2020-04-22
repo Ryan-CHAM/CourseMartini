@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
       @course.description = @proposal.description
       @course.book = @proposal.book
       @course.url = @proposal.url
-      @flag = params[:format]
+      @flag = 1
     else
     @course = Course.new
     @flag = 0
@@ -45,24 +45,17 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.code = @course.code.upcase
-    if params[:proposed]
-      if @course.save
-        @proposal = Proposal.find(params[:proposed])
-        @proposal.destroy
-        redirect_to "/proposals"
-      else
-        render :new
-      end
-    else
-
     respond_to do |format|
       if @course.save
+        @proposal = Proposal.where(:code => @course.code).last
+        if @proposal != nil
+          @proposal.destroy
+        end
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
       end
     end
   end

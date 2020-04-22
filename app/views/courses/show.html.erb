@@ -303,7 +303,9 @@
 </div>
 
 <p><br></p>
-<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
+<% if current_user&.admin? %>
+  <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
+<% end %>
 <%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
 <%= link_to 'Add Comment', new_comment_path(@course), :class=>"btn btn-outline-primary" %>
 <% if current_user&.admin? %>

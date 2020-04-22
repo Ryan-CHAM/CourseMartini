@@ -5,6 +5,8 @@
 	<table class="table table-striped">
 	<thead>
 		<tr>
+			<th> Option </th>
+
 			<th> Username </th>
 					
 			<th> Course Code </th>
@@ -19,17 +21,20 @@
 
 			<th> Usefulness </th>
 
+			<th> GPA </th>
+			
 			<th> Comment </th>
 
-			<th> GPA </th>
-
-			<th> Option </th>
 
 		</tr>
 	</thead>
 	<tbody>
 		<% @comments.each do |comment| %>
 		<tr>
+			<td>
+				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>
+			</td>
+
 			<td><%= comment.username %></td>
 	
 			<td><%= comment.courseid %></td>
@@ -44,13 +49,11 @@
 
 			<td><%= comment.usefulness_score %></td>
 
+			<td><%= comment.gpa %></td>
+			
 			<td><%= comment.posts %></td>
 
-			<td><%= comment.gpa %></td>
-
-			<td>
-				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>
-			</td>
+			
 		</tr>
 		<% end %>
 	</tbody>

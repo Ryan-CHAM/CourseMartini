@@ -104,9 +104,9 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-
 	    @comment = Comment.find_by(id: params[:id])
 	   	@course = Course.find_by(id: @comment.course_id)
+
 	   	if @course.n_comments==1
 	   		@course.overall = 0
 	   		@course.workload = 0	
@@ -123,6 +123,7 @@ class CommentsController < ApplicationController
 			@course.gpa = (@course.gpa*@course.n_comments-@comment.gpa)/(@course.n_comments-1)   	
 	   	end
 		@course.n_comments = @course.n_comments-1
+
 	   	@course.save
 	    @comment.destroy if @comment
 	    redirect_to comments_path(@course), notice: "post delete!"

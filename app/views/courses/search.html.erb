@@ -50,6 +50,9 @@
 <br>
 <div style="margin-bottom:150px">
   <% @courses.each do |course| %>
+  <%if course.overall == nil%>
+    <%next%>
+  <%end%>
   <div class="card border-info" style="margin:0% 15%">
     <div class="card-header text-white bg-info">
       <font size="4"><%= course.code %> <%= course.name %></font>
@@ -67,10 +70,10 @@
             <font class="card-text" size="3">workload: <%= course.workload.round(1)  %></font>
           </div>
           <div class="col-lg-3">
-            <font class="card-text" size="3">quality: <%= course.quality.round(1)  %></font>
+            <font class="card-text" size="3">quality: <%= course.quality.round(1) %></font>
           </div>
           <div class="col-lg-3">
-            <font class="card-text" size="3">usefulness: <%= course.usefulness.round(1)  %></font>
+            <font class="card-text" size="3">usefulness: <%= course.usefulness.round(1) %></font>
           </div>
         </div>
       </div>

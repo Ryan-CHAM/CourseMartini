@@ -34,6 +34,7 @@
   <div class="row">
   <!--Div that will hold the bubble chart-->
       <div id="textstyle" style="width: 1350px; height: 750px; margin: 0 auto"></div>
+      <div id="chart_div" style="width: 1350px; height: 750px; margin: 0 auto"></div>
   </div>
 </div>
 
@@ -48,6 +49,47 @@
 
   <!-- Set a call back to run when the google visualization API is loaded -->
   google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawVisualization);
+
+  function drawVisualization() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable([
+      ['Course Code', 'Teaching Qulity', 'Workload', 'Usefulness', 'Difficulty', 'CGPA', 'Overall'],
+      ['CSCI3100',  1,      2,         3,             4,           4,      3],
+      ['CSCI2100',  2.5,      3,        4.5,             4,          3.3,      4],
+      ['ENGG2100',  1.6,      2.6,        3.6,             3.3,           3.2,      4.7],
+      ['DSME1030',  2.8,      3.9,        1.6,             4.1,           2.9,      4.4],
+      ['DSME1040',  3.1,      4.4,         2,             4,          3,      3.6]
+    ]);
+
+    var options = {
+      title : 'Course Dashboard',
+      vAxis: {title: 'Score'},
+      hAxis: {title: 'Course Code'},
+      seriesType: 'bars',
+      animation:{
+        duration: 2000,
+        easing: 'inAndOut',
+        startup:true
+
+      },
+      explorer: {
+        maxZoomIn: .5 ,
+        maxZoomOut: 8 ,
+        keepInBounds: true
+     },
+
+     legend:{
+       alignment:'center',
+       position:'right'
+     },
+
+     selectionMode:'multiple',
+      series: {5: {type: 'line'}}        };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
 
   <!-- Callback that creates and populates a data table, instantiates the bubble chart, passes in the data and draws it/-->
 
@@ -84,8 +126,6 @@
       },
 
       explorer: {
-         maxZoomIn: .5 ,
-         maxZoomOut: 8 ,
          keepInBounds: true
       },
 

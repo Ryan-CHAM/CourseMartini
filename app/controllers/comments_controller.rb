@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
 			
 			@course.overall = (@course.overall*@course.n_comments+@comment.score)/(@course.n_comments+1)
 			@course.workload = (@course.workload*@course.n_comments+@comment.workload_score)/(@course.n_comments+1)
-			@course.quality = (@course.quality*@course.n_comments+@comment.quality_score)/(@course.n_comments+1)
+			@course.quality = (@course.quality*@course.n_comments+@comment.teachingQuality_score)/(@course.n_comments+1)
 			@course.difficulty = (@course.difficulty*@course.n_comments+@comment.difficulty_score)/(@course.n_comments+1)
 			@course.usefulness = (@course.usefulness*@course.n_comments+@comment.usefulness_score)/(@course.n_comments+1)
 			@course.gpa = (@course.gpa*@course.n_comments+@comment.gpa)/(@course.n_comments+1)
@@ -90,7 +90,7 @@ class CommentsController < ApplicationController
 		if @comment.save	#success
 			@course.overall = (@course.overall*@course.n_comments+@comment.score)/(@course.n_comments+1)
 			@course.workload = (@course.workload*@course.n_comments+@comment.workload_score)/(@course.n_comments+1)
-			@course.quality = (@course.quality*@course.n_comments+@comment.quality_score)/(@course.n_comments+1)
+			@course.quality = (@course.quality*@course.n_comments+@comment.teachingQuality_score)/(@course.n_comments+1)
 			@course.difficulty = (@course.difficulty*@course.n_comments+@comment.difficulty_score)/(@course.n_comments+1)
 			@course.usefulness = (@course.usefulness*@course.n_comments+@comment.usefulness_score)/(@course.n_comments+1)
 			@course.gpa = (@course.gpa*@course.n_comments+@comment.gpa)/(@course.n_comments+1)
@@ -109,14 +109,14 @@ class CommentsController < ApplicationController
 	   	@course = Course.find_by(id: @comment.course_id)
 	   	@course.overall = (@course.overall*@course.n_comments-@comment.score)/(@course.n_comments-1)
 		@course.workload = (@course.workload*@course.n_comments-@comment.workload_score)/(@course.n_comments-1)
-		@course.quality = (@course.quality*@course.n_comments-@comment.quality_score)/(@course.n_comments-1)
+		@course.quality = (@course.quality*@course.n_comments-@comment.teachingQuality_score)/(@course.n_comments-1)
 		@course.difficulty = (@course.difficulty*@course.n_comments-@comment.difficulty_score)/(@course.n_comments-1)
 		@course.usefulness = (@course.usefulness*@course.n_comments-@comment.usefulness_score)/(@course.n_comments-1)
 		@course.gpa = (@course.gpa*@course.n_comments-@comment.gpa)/(@course.n_comments-1)
 	   	@course.n_comments = @course.n_comments-1
 	   	@course.save
 	    @comment.destroy if @comment
-	    redirect_to comments_path, notice: "post delete!"
+	    redirect_to comments_path(@course), notice: "post delete!"
   	end
 
 

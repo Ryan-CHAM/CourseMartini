@@ -6,36 +6,75 @@
       <div id="chart_div" style="width: 1350px; height: 750px; margin: 0 auto"></div>
 
 <%# Jimmy's part %>
-     <div class="col-lg-10 offset-lg-1">
-        <div class="user_form" style="margin-bottom: 50px">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="card-columns">
-              <%if @comments != nil%>
-                <% @comments.each do |comment| %>
-                    <div class="text_box">
-                      <div class="card" style="border:0px">
-                        <div class="card border-dark mb-3" style="max-width: 100rem;">   
-                          <div class="card-header" style="margin-bottom:0px"><strong><a href="/courses/<%=comment.course_id%>" style="color:black"><%=comment.courseid %></a></strong></div>
-                          <div class="card-body text-dark" style="margin-top:-10px">
-                            <p>Overall: <%= comment.score %> / 5</p>
-                            <p>Teaching Quality: <%= comment.teachingQuality_score %> / 5</p>
-                            <p>Usefulness: <%= comment.usefulness_score %> / 5</p>
-                            <p>Difficulty: <%= comment.difficulty_score %> / 5</p>
-                            <p>Workload: <%= comment.workload_score %> / 5</p>
-                            <p>GPA: <%= comment.gpa %> / 4</p>
-                            <%if current_user&.admin?%>
-                            <p><%= comment.posts %></p>
-                            <%end%>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                <% end %>
-              <% end %>
+    
+    <h2 style="margin-bottom: 10px; text-transform: uppercase; text-align: center"><strong>Latest Comments</strong></h2>
+      <div class="card-columns" >
+      
+      <% @comments.each do |comment| %>
+
+        <div class="card" style="border: 0px">
+       
+        <div class="card border-dark mb-3" style="max-width: 100rem;">   
+        
+
+        <div class="card-header"><strong><a href="/profile/<%=comment.user_id%>" style="color:black"><%= comment.username %></a></strong></div>
+          
+          <div class="card-body text-dark">
+            
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: <%= comment.score*20 %>%" aria-valuenow=comment.score aria-valuemin="0" aria-valuemax="4"></div>
             </div>
+            <p class="card-title">Overall: <%= comment.score %> / 5</p>
+            <p><br></p>
+
+            
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" style="width: <%= comment.teachingQuality_score*20 %>%" aria-valuenow=comment.teachingQuality_score aria-valuemin="0" aria-valuemax="4"></div>
+            </div>
+            <p class="card-text">Teaching Quality: <%= comment.teachingQuality_score %> / 5</p>
+            <p><br></p>
+
+            
+            <div class="progress">
+              <div class="progress-bar bg-info" role="progressbar" style="width: <%= comment.usefulness_score*20 %>%" aria-valuenow=comment.usefulness_score aria-valuemin="0" aria-valuemax="4"></div>
+            </div>
+            <p class="card-text">Usefulness: <%= comment.usefulness_score %> / 5</p>
+            <p><br></p>
+
+           
+            <div class="progress">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: <%= comment.difficulty_score*20 %>%" aria-valuenow=comment.difficulty_score aria-valuemin="0" aria-valuemax="4"></div>
+            </div>
+            <p class="card-text">Difficulty: <%= comment.difficulty_score %> / 5</p>
+            <p><br></p>
+
+            
+            <div class="progress">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: <%= comment.workload_score*20 %>%" aria-valuenow=comment.workload_score aria-valuemin="0" aria-valuemax="4"></div>
+            </div>
+            <p class="card-text">Workload: <%= comment.workload_score %> / 5</p>
+            <p><br></p>
+            
+            <div class="progress">
+              <div class="progress-bar bg-dark" role="progressbar" style="width: <%= comment.gpa*25 %>%" aria-valuenow=comment.gpa aria-valuemin="0" aria-valuemax="4"></div>
+            </div>
+            <p class="card-text">GPA: <%= comment.gpa %> / 4</p>
           </div>
+
+          <div class="card-body text-dark">
+          <h5 class="card-title">Comment:</h5>  
+            <%= comment.posts %>
+              
+          </div>
+
+
         </div>
+
       </div>
+
+
+    <% end %>
+  </div>
 
 <%# Jimmy's part finished %>
 

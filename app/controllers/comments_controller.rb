@@ -104,15 +104,14 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-
 	    @comment = Comment.find_by(id: params[:id])
 	   	@course = Course.find_by(id: @comment.course_id)
-	   	@course.overall = (@course.overall*@course.n_comments-@comment.score)/(@course.n_comments-1)
-		@course.workload = (@course.workload*@course.n_comments-@comment.score)/(@course.n_comments-1)
-		@course.quality = (@course.quality*@course.n_comments-@comment.score)/(@course.n_comments-1)
-		@course.difficulty = (@course.difficulty*@course.n_comments-@comment.score)/(@course.n_comments-1)
-		@course.usefulness = (@course.usefulness*@course.n_comments-@comment.score)/(@course.n_comments-1)
-		@course.gpa = (@course.gpa*@course.n_comments-@comment.gpa)/(@course.n_comments-1)
+		@course.overall = ((@course.overall*@course.n_comments-@comment.score)/(@course.n_comments-1))
+		@course.workload = ((@course.workload*@course.n_comments-@comment.score)/(@course.n_comments-1))
+		@course.quality = ((@course.quality*@course.n_comments-@comment.score)/(@course.n_comments-1))
+		@course.difficulty = ((@course.difficulty*@course.n_comments-@comment.score)/(@course.n_comments-1))
+		@course.usefulness = ((@course.usefulness*@course.n_comments-@comment.score)/(@course.n_comments-1))
+		@course.gpa = ((@course.gpa*@course.n_comments-@comment.gpa)/(@course.n_comments-1))
 	   	@course.n_comments = @course.n_comments-1
 	   	@course.save
 	    @comment.destroy if @comment

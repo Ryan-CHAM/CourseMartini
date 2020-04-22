@@ -21,7 +21,7 @@ class Course < ApplicationRecord
     end
     
     def self.random()
-        if Course.all.size < 3
+        if Course.all.size <= 3
             return Course.all
         else
             random = Array.new
@@ -31,7 +31,7 @@ class Course < ApplicationRecord
                 random[1] = rand(Course.all.size) + 1
             end
             random[2] = rand(Course.all.size) + 1
-            until random[2] != random[0] && random[2] != random[0]
+            until random[2] != random[0] && random[2] != random[1]
                 random[2] = rand(Course.all.size) + 1
             end
             return Course.where(:id => random)

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+    
+    get 'homepage/overview', to: "homepage#overview"
   resources :proposals
   get 'homepage/index'
   root 'homepage#index'

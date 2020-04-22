@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
       @course.description = @proposal.description
       @course.book = @proposal.book
       @course.url = @proposal.url
-      @flag = 1
+      @flag = params[:format]
     else
     @course = Course.new
     @flag = 0
@@ -45,6 +45,15 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.code = @course.code.upcase
+    if params[:proposed]
+      if @course.save
+        @proposal = Proposal.find(params[:proposed])
+        @proposal.destroy
+        redirect_to "/proposals"
+      else
+        render :new
+      end
+    else
 
     respond_to do |format|
       if @course.save
@@ -54,6 +63,7 @@ class CoursesController < ApplicationController
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
+      end
     end
   end
 
@@ -62,8 +72,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+          format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+          format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
         format.json { render json: @course.errors, status: :unprocessable_entity }

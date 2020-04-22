@@ -119,7 +119,7 @@
       <div class="card-body text-warning">
         <h5 class="card-title"><%= @course.workload %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-warning" role="progressbar" style="width: <%=@course.workload%>%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-warning" role="progressbar" style="width: <%=@course.workload*20%>%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>
@@ -150,18 +150,7 @@
           google.charts.setOnLoadCallback(drawChart);
 
           function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-              ['User', 'Overall', 'Teaching Quality','Workload','Usefulness','Difficulty'],
-              ['test1',   1,           2,               3,         4,                 5],
-              ['test2',   4,           5,               3,         5,                 4],
-              ['test3',   3,           3,               4,         4,                 5],
-              ['test4',   2,           3,               4,         5,                 3],
-              ['test5',   3,           3,               4,         5,                 3],
-              ['test6',   5,           1,               2,         3,                 4], 
-              ['test7',   3,           5,               4,         3,                 2],
-              ['test8',   4,           4,               3,         3,                 3],
-              ['test9',   4,           5,               1,         4,                 2]
-            ]);
+            var data = google.visualization.arrayToDataTable(<%= @trend %>);
 
             var options = {
               curveType: 'function',

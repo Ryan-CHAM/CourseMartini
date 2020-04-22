@@ -86,7 +86,7 @@
     <div class="card border-success mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Teaching Quality</strong></div>
       <div class="card-body text-success">
-        <h5 class="card-title"><%= @course.quality %> / 5</h5>
+        <h5 class="card-title"><%= @course.quality.round(1) %> / 5</h5>
         <div class="progress">
           <div class="progress-bar bg-success" role="progressbar" style="width: <%=@course.quality*20%>%" aria-valuenow=@course.quality aria-valuemin="0" aria-valuemax="5"></div>
         </div>
@@ -96,7 +96,7 @@
     <div class="card border-info mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Usefulness</strong></div>
       <div class="card-body text-info">
-        <h5 class="card-title"><%= @course.usefulness %> / 5</h5>
+        <h5 class="card-title"><%= @course.usefulness.round(1) %> / 5</h5>
         <div class="progress">
           <div class="progress-bar bg-info" role="progressbar" style="width: <%=@course.usefulness*20%>%" aria-valuenow=@course.usefulness aria-valuemin="0" aria-valuemax="5"></div>
         </div>
@@ -107,7 +107,7 @@
     <div class="card border-danger mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Difficulty</strong></div>
       <div class="card-body text-danger">
-        <h5 class="card-title"><%= @course.difficulty %> / 5</h5>
+        <h5 class="card-title"><%= @course.difficulty.round(1) %> / 5</h5>
         <div class="progress">
           <div class="progress-bar bg-danger" role="progressbar" style="width: <%=@course.difficulty*20%>%" aria-valuenow=@course.difficulty aria-valuemin="0" aria-valuemax="5"></div>
         </div>
@@ -117,7 +117,7 @@
     <div class="card border-warning mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Workload</strong></div>
       <div class="card-body text-warning">
-        <h5 class="card-title"><%= @course.workload %> / 5</h5>
+        <h5 class="card-title"><%= @course.workload.round(1) %> / 5</h5>
         <div class="progress">
           <div class="progress-bar bg-warning" role="progressbar" style="width: <%=@course.workload%>%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
         </div>

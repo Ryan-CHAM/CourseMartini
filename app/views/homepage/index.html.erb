@@ -66,11 +66,7 @@
         startup:true
 
       },
-      explorer: {
-        maxZoomIn: .5 ,
-        maxZoomOut: 8 ,
-        keepInBounds: true
-     },
+
 
      legend:{
        alignment:'center',
@@ -119,9 +115,18 @@
       },
 
       explorer: {
-         keepInBounds: true
+         keepInBounds: true,
+         zoomDelta:1.2,
+         maxZoomOut: 2,
+         maxZoomIn: .35 
+       
       },
-
+      sizeAxis:{
+        maxValue:5,
+        minValue:0,
+        maxSize:45,
+        minSize:10
+      },
       legend:{
         alignment:'center',
         position:'right'

@@ -1,7 +1,7 @@
 class HomepageController < ApplicationController
   include Devise::Controllers::Helpers 
 
-  def home
+  def index
       array = Array.new
       array[0] = ['Course', 'Workload', 'TeachingQuality', 'Faculty', 'Overall']
       i = 1

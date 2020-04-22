@@ -132,8 +132,8 @@ class CommentsController < ApplicationController
 
 	def check_sign_in
 		unless user_signed_in?
-			flash[:notice] = "please sign in"
-			redirect_to root_path
+			flash[:warning] = "please sign in"
+			redirect_to "/users/sign_in"
 		end
 	end
 

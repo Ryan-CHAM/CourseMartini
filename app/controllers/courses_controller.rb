@@ -17,7 +17,22 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     redirect_to root_path unless current_user&.admin? 
+    if params[:format]
+      @proposal = Proposal.find(params[:format])
+      @course = Course.new
+      @course.code = @proposal.code
+      @course.name = @proposal.name
+      @course.subject = @proposal.subject
+      @course.faculty = @proposal.faculty
+      @course.instructor = @proposal.instructor
+      @course.description = @proposal.description
+      @course.book = @proposal.book
+      @course.url = @proposal.url
+      @flag = 1
+    else
     @course = Course.new
+    @flag = 0
+    end
   end
 
   # GET /courses/1/edit
@@ -29,6 +44,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.code = @course.code.upcase
 
     respond_to do |format|
       if @course.save
@@ -68,8 +84,16 @@ class CoursesController < ApplicationController
   end
   
   def search
-      @courses = Course.search(params[:search]).page(params[:page]).per(5)
+      if params[:search] == ""
+        redirect_to "/random"
+      end
+      @courses = Course.where("courses.code LIKE ?", "%#{params[:search].upcase}%").page(params[:page]).per(5)
   end
+  
+  def random
+      @courses = Course.random
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -81,5 +105,6 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:code, :name, :subject, :faculty, :description, :workload, :difficulty, :quality, :usefulness, :gpa, :overall, :n_comments, :book, :url, :instructor)
     end
+
 
 end

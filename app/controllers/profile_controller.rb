@@ -5,7 +5,8 @@ class ProfileController < ApplicationController
             redirect_to root_path 
         end
         @count = Comment.where(:username => @user.name).count
-        @last = Comment.where(:username => @user.name).last
+        @comment = Comment.where(:username => @user.name).last
+
     end
 
     def setting  
@@ -17,8 +18,12 @@ class ProfileController < ApplicationController
         @user = current_user
         @name = @user.name
         @intro = @user.intro
-        @user.name = params[:name]
-        @user.intro = params[:intro]
+        unless params[:name] == "" 
+            @user.name = params[:name] 
+        end
+        unless params[:intro] == ""
+            @user.intro = params[:intro] 
+        end
         if @user.save
             redirect_to "/profile/#{@user.id}",
             :notice => "Update successful!"
@@ -29,8 +34,10 @@ class ProfileController < ApplicationController
         end
     end
 
-
-    
+    def comments
+        @user = User.find(params[:id])
+        @comments = Comment.where(:user_id => @user.id)
+    end   
     
 
 end

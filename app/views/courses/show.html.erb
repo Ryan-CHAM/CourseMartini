@@ -144,49 +144,11 @@
   <div class="card border-dark mb-3" style="max-width: 100rem;">
     <div class="card-header">Latest Ratings</div>
     <div class="card-body">
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-          google.charts.load('current', {'packages':['corechart']});
-          google.charts.setOnLoadCallback(drawChart);
-
-          function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-              ['User', 'Overall', 'Teaching Quality','Workload','Usefulness','Difficulty'],
-              ['test1',   1,           2,               3,         4,                 5],
-              ['test2',   4,           5,               3,         5,                 4],
-              ['test3',   3,           3,               4,         4,                 5],
-              ['test4',   2,           3,               4,         5,                 3],
-              ['test5',   3,           3,               4,         5,                 3],
-              ['test6',   5,           1,               2,         3,                 4], 
-              ['test7',   3,           5,               4,         3,                 2],
-              ['test8',   4,           4,               3,         3,                 3],
-              ['test9',   4,           5,               1,         4,                 2]
-            ]);
-
-            var options = {
-              curveType: 'function',
-              legend: { 
-                position: 'right',
-                alignment:'center'
-              },
-              width: 650,
-              height: 400,
-              chartArea: {
-                width: 450,
-                left:50,
-                top:40, 
-                height:300
-              },
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-          }
-        </script>
-
-
-        <div id="curve_chart" style="width: 900px; height: 500px" ></div>
+        <%if @comments.size != 0%>
+          <div id="curve_chart" style="width: 900px; height: 500px" ></div>
+        <%else%>
+          <p>We do not have enough data yet</p>
+        <%end%>
         </div>
     </div>
   </div>
@@ -197,17 +159,16 @@
   <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
   <p><br></p>
   
-  <div class="card-columns">
+  <div class="card-columns" >
   
       <% @comments.each do |comment| %>
 
-        <div class="card">
+        <div class="card" style="border: 0px">
        
         <div class="card border-dark mb-3" style="max-width: 100rem;">   
         
 
         <div class="card-header"><strong><a href="/profile/<%=comment.user_id%>" style="color:black"><%= comment.username %></a></strong></div>
-          <div class="card-body text-dark"><%= comment.posts %></div>
           
           <div class="card-body text-dark">
             
@@ -304,7 +265,9 @@
 </div>
 
 <p><br></p>
-<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
+<% if current_user&.admin? %>
+  <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
+<% end %>
 <%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
 <%= link_to 'Add Comment', new_comment_path(@course), :class=>"btn btn-outline-primary" %>
 <% if current_user&.admin? %>
@@ -322,7 +285,35 @@
 
 
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
 
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable(<%= @trend %>);
+
+            var options = {
+              curveType: 'function',
+              legend: { 
+                position: 'right',
+                alignment:'center'
+              },
+              width: 650,
+              height: 400,
+              chartArea: {
+                width: 450,
+                left:50,
+                top:40, 
+                height:300
+              },
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+          }
+        </script>
 
 
 

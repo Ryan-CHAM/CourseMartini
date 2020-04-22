@@ -1,14 +1,18 @@
 <style>
-td{
-  white-space: normal !important; 
-  word-wrap: break-word; 
-}
-table {
-  table-layout: fixed;
-}
+  td{
+    white-space: normal !important; 
+    word-wrap: break-word; 
+  }
+  table {
+    table-layout: fixed;
+  }
 </style>
-    <h1>Courses Database (Administrator's View)</h1>
-
+<h1>Courses Database (Administrator's View)</h1>
+<div class="text-left">
+  <%= link_to 'New Course', new_course_path, :class=>"btn btn-outline-primary"%>
+  <%= link_to 'Proposals ', "/proposals", :class=>"btn btn-outline-primary"%>
+</div>
+<br>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -37,7 +41,7 @@ table {
       </thead>
 
       <tbody>
-        <% @courses.each do |course| %>
+        <% @courses.reverse.each do |course| %>
           <tr>
             <td><%= course.id %></td>
             <td><%= course.code %></td>
@@ -71,7 +75,5 @@ table {
 
     <br>
 
-<div class="text-center">
-    <%= link_to 'New Course', new_course_path, :class=>"btn btn-outline-primary"%>
-    <%= link_to 'Proposals ', "/proposals", :class=>"btn btn-outline-primary"%>
-</div>
+
+<br><br>

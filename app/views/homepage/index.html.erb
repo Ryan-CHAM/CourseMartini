@@ -27,13 +27,14 @@
   <br>
   <div class="text-center">
     <a href="/random">
-      <button type="button" class="btn btn-outline-info">Give me random courses!</button>
+      <button type="button" class="btn btn-outline-info">I'm feeling lucky!</button>
     </a>
   </div><hr>
 
   <div class="row">
   <!--Div that will hold the bubble chart-->
       <div id="textstyle" style="width: 1350px; height: 750px; margin: 0 auto"></div>
+      <div id="chart_div" style="width: 1350px; height: 750px; margin: 0 auto"></div>
   </div>
 </div>
 
@@ -48,6 +49,40 @@
 
   <!-- Set a call back to run when the google visualization API is loaded -->
   google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(drawVisualization);
+
+  function drawVisualization() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable(<%= @sesruoc %>);
+
+    var options = {
+      title : 'Course Dashboard',
+      vAxis: {title: 'Score'},
+      hAxis: {title: 'Course Code'},
+      seriesType: 'bars',
+      animation:{
+        duration: 2000,
+        easing: 'inAndOut',
+        startup:true
+
+      },
+      explorer: {
+        maxZoomIn: .5 ,
+        maxZoomOut: 8 ,
+        keepInBounds: true
+     },
+
+     legend:{
+       alignment:'center',
+       position:'right'
+     },
+
+     selectionMode:'multiple',
+      series: {5: {type: 'line'}}        };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
 
   <!-- Callback that creates and populates a data table, instantiates the bubble chart, passes in the data and draws it/-->
 
@@ -84,8 +119,6 @@
       },
 
       explorer: {
-         maxZoomIn: .5 ,
-         maxZoomOut: 8 ,
          keepInBounds: true
       },
 

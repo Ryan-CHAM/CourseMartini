@@ -12,6 +12,17 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @comments=Comment.where(course_id: params[:id]).reorder(id: :desc)
+    array = Array.new
+    array[0] = ['User', 'Overall', 'Teaching Quality','Workload','Usefulness','Difficulty']
+    i = 1
+    @comments.each do |comment|
+        array[i] = [comment.username, comment.score, comment.teachingQuality_score, comment.workload_score, comment.usefulness_score,comment.difficulty_score]
+        i = i + 1
+        if i == 11
+          last
+        end
+    end
+    @trend = array.to_json.html_safe
   end
 
   # GET /courses/new
@@ -45,9 +56,12 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.code = @course.code.upcase
-
     respond_to do |format|
       if @course.save
+        @proposal = Proposal.where(:code => @course.code).last
+        if @proposal != nil
+          @proposal.destroy
+        end
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -62,8 +76,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+          format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+          format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
         format.json { render json: @course.errors, status: :unprocessable_entity }

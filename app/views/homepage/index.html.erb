@@ -53,14 +53,7 @@
 
   function drawVisualization() {
     // Some raw data (not necessarily accurate)
-    var data = google.visualization.arrayToDataTable([
-      ['Course Code', 'Teaching Qulity', 'Workload', 'Usefulness', 'Difficulty', 'CGPA', 'Overall'],
-      ['CSCI3100',  1,      2,         3,             4,           4,      3],
-      ['CSCI2100',  2.5,      3,        4.5,             4,          3.3,      4],
-      ['ENGG2100',  1.6,      2.6,        3.6,             3.3,           3.2,      4.7],
-      ['DSME1030',  2.8,      3.9,        1.6,             4.1,           2.9,      4.4],
-      ['DSME1040',  3.1,      4.4,         2,             4,          3,      3.6]
-    ]);
+    var data = google.visualization.arrayToDataTable(<%= @sesruoc %>);
 
     var options = {
       title : 'Course Dashboard',

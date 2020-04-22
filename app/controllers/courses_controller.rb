@@ -12,6 +12,17 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @comments=Comment.where(course_id: params[:id]).reorder(id: :desc)
+    array = Array.new
+    array[0] = ['User', 'Overall', 'Teaching Quality','Workload','Usefulness','Difficulty']
+    i = 1
+    @comments.each do |comment|
+        array[i] = [comment.username, comment.score, comment.teachingQuality_score, comment.workload_score, comment.usefulness_score,comment.difficulty_score]
+        i = i + 1
+        if i == 11
+          last
+        end
+    end
+    @trend = array.to_json.html_safe
   end
 
   # GET /courses/new

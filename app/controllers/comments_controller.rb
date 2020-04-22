@@ -125,7 +125,6 @@ class CommentsController < ApplicationController
 
 		params.require(:comment).permit( :gpa, :score,:workload_score, :teachingQuality_score, :difficulty_score, :usefulness_score, :posts)
 
-
 	end
 
 	

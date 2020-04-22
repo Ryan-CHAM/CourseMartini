@@ -45,9 +45,12 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.code = @course.code.upcase
-
     respond_to do |format|
       if @course.save
+        @proposal = Proposal.where(:code => @course.code).last
+        if @proposal != nil
+          @proposal.destroy
+        end
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -62,8 +65,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+          format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+          format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
         format.json { render json: @course.errors, status: :unprocessable_entity }

@@ -2,6 +2,14 @@ class HomepageController < ApplicationController
   include Devise::Controllers::Helpers 
   
   def overview
+      
+      if Comment.all.size>3
+        @comments = Comment.last(3)
+      else
+        @comments = Comment.all
+      end
+
+
       array = Array.new
       array[0] = ['Course', 'Workload', 'TeachingQuality', 'Faculty', 'Overall']
       i = 1

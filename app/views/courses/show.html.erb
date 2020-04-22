@@ -119,7 +119,7 @@
       <div class="card-body text-warning">
         <h5 class="card-title"><%= @course.workload.round(1) %> / 5</h5>
         <div class="progress">
-          <div class="progress-bar bg-warning" role="progressbar" style="width: <%=@course.workload%>%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
+          <div class="progress-bar bg-warning" role="progressbar" style="width: <%=@course.workload*20%>%" aria-valuenow=@course.workload aria-valuemin="0" aria-valuemax="5"></div>
         </div>
       </div>
     </div>

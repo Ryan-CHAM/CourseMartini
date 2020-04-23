@@ -1,3 +1,8 @@
+<style>
+#chart-div {
+   overflow-x: scroll;    
+}
+</style>
 <div style="margin:0% 10%">
 <div class="container">
   <div class="row">
@@ -94,40 +99,6 @@
   google.charts.setOnLoadCallback(drawChart);
   google.charts.setOnLoadCallback(drawVisualization);
 
-  function drawVisualization() {
-    // Some raw data (not necessarily accurate)
-    var data = google.visualization.arrayToDataTable(<%= @sesruoc %>);
-
-    var options = {
-      title : 'Course Dashboard',
-      vAxis: {title: 'Score'},
-      hAxis: {title: 'Course Code'},
-      seriesType: 'bars',
-      animation:{
-        duration: 2000,
-        easing: 'inAndOut',
-        startup:true
-
-      },
-
-      explorer: {
-        maxZoomIn: .5 ,
-        maxZoomOut: 8 ,
-        keepInBounds: true
-     },
-
-     legend:{
-       alignment:'center',
-       position:'right'
-     },
-
-     selectionMode:'multiple',
-      series: {5: {type: 'line'}}        };
-
-    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-  }
-
   <!-- Callback that creates and populates a data table, instantiates the bubble chart, passes in the data and draws it/-->
 
   function drawChart() {
@@ -163,22 +134,7 @@
       },
 
       explorer: {
-
-         keepInBounds: true
-      },
-
-
-         keepInBounds: true,
-         zoomDelta:1.2,
-         maxZoomOut: 2,
-         maxZoomIn: .35 
-       
-      },
-      sizeAxis:{
-        maxValue:5,
-        minValue:0,
-        maxSize:45,
-        minSize:10
+         keepInBounds: false
       },
 
       legend:{
@@ -198,6 +154,41 @@
    
     <!--Instantiate and draw our chart, passing in some options-->
     var chart = new google.visualization.BubbleChart(document.getElementById('textstyle'));
+    chart.draw(data, options);
+  }
+
+  function drawVisualization() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable(<%= @courses2 %>);
+
+    var options = {
+      title : 'Course Dashboard',
+      hAxis: {title: 'Course Code'
+      , maxAlternation: 2},
+      vAxis: {title: 'Score'},
+      seriesType: 'bars',
+      animation:{
+        duration: 2000,
+        easing: 'inAndOut',
+        startup:true
+
+      },
+
+      explorer: {
+        maxZoomIn: .5 ,
+        maxZoomOut: 8 ,
+        keepInBounds: false
+     },
+
+     legend:{
+       alignment:'center',
+       position:'right'
+     },
+
+     selectionMode:'multiple',
+    series: {5: {type: 'line'}}        };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
     chart.draw(data, options);
   }
   

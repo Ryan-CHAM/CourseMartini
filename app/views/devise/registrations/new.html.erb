@@ -10,7 +10,8 @@
                                 <div class="signup_alert" role="alert">
                                     <br>
                                     <% @user.errors.full_messages.each do |msg| %>
-                                        <%if msg.include?("invalid")%>
+                                        <%if @user.errors.size ==1%>
+                                        <%elsif msg.include?("invalid")%>
                                             <%next%>
                                         <%end%>
                                     <p>* <%=msg%></p>

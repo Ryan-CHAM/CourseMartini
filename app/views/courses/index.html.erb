@@ -49,7 +49,11 @@
             <td><%= course.subject %></td>
             <td><%= course.faculty %></td>
             <td><%= course.instructor %></td>
-            <td><%= course.description %></td>
+            <%if course.description==""%>
+              <td><%= "N/A" %></td>
+            <%else%>
+              <td><%= "Exist" %></td>
+            <%end%>
 
             <td><%= course.workload %></td>
             <td><%= course.difficulty %></td>

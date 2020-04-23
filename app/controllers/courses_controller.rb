@@ -19,9 +19,10 @@ class CoursesController < ApplicationController
         array[i] = [comment.username, comment.score, comment.teachingQuality_score, comment.workload_score, comment.usefulness_score,comment.difficulty_score]
         i = i + 1
         if i == 11
-          last
+          break
         end
     end
+    
     @trend = array.to_json.html_safe
   end
 

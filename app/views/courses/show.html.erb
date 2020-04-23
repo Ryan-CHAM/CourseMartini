@@ -1,3 +1,8 @@
+<% if warning %>
+		<div class="alert alert-danger" role="alert">
+			<p class="notice"><%= warning %></p>
+		</div>
+<% end %>
 <h1><%= @course.code %> <%= @course.name %> </h1>
 
 <div class="container">
@@ -76,7 +81,7 @@
     <div class="card border-primary mb-3" style="max-width: 100rem;">   
     <div class="card-header"><strong>Overall Rating</strong></div>
       <div class="card-body text-primary">
-        <h5 class="card-title"><%= @course.workload %> / 5</h5>
+        <h5 class="card-title"><%= @course.workload.round(1) %> / 5</h5>
         <div class="progress">
           <div class="progress-bar bg-primary" role="progressbar" style="width: <%=@course.overall*20%>%" aria-valuenow=@course.overall aria-valuemin="0" aria-valuemax="5"></div>
         </div>
@@ -295,6 +300,10 @@
 
             var options = {
               curveType: 'function',
+              hAxis: {
+                slantedText: true,
+                direction: '-1',
+              },
               legend: { 
                 position: 'right',
                 alignment:'center'

@@ -27,15 +27,14 @@ class CommentsController < ApplicationController
 
 	def create
 
-		#render json: params
-
 		@user=current_user
-
-		
 		@id = params[:course_id]
 		@course = Course.find_by(id: @id)
-
 		@comment = Comment.new(comment_params)
+		if Comment.where(user_id: @user.id, course_id: @id).exists?
+			redirect_to @course, warning: "You cannot comment a course twice"
+			return
+		end
 		@comment.update(user:@user, course:@course)
 		@comment.courseid = @course.code
 
@@ -59,8 +58,7 @@ class CommentsController < ApplicationController
 			@course.gpa = (@course.gpa*@course.n_comments+@comment.gpa)/(@course.n_comments+1)
 			@course.n_comments = @course.n_comments+1
 			@course.save
-			redirect_to @course, notice: "make new comment"#finally redirect to course page
-
+			redirect_to @course, notice: "made new comment"#finally redirect to course page
 		else				#fail
 			render :new
 		end
@@ -96,7 +94,7 @@ class CommentsController < ApplicationController
 			@course.gpa = (@course.gpa*@course.n_comments+@comment.gpa)/(@course.n_comments+1)
 			@course.n_comments = @course.n_comments+1
 			@course.save
-			redirect_to @course, notice: "make new comment"#finally redirect to course page
+			redirect_to @course, notice: "updated comment"#finally redirect to course page
 
 		else				#fail
 			render :new

@@ -6,19 +6,14 @@
 					<div class="user_form" style="margin-top: 100px">
 						<h2 style="margin-bottom:-30px"><strong>Change your password</strong></h2>
 						<div class="col-lg-8 offset-lg-2">
-
 							<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 							<br><br>
 							<% if @user.errors.any? %>
-  <%= @user.errors.full_messages %>
-<% end %>
-							<% if @user.errors.any? %>
-							<% @user.errors.full_%>
 							<div class="alert alert-danger" role="alert">
 								<p>Invalid password or passwords does not match</p>
 							</div>
 							<%end%>
-							
+							<%= f.hidden_field :reset_password_token %>
 							<div class="form-group">
 								<%= f.password_field :password, class: 'form-control', placeholder: 'password (length: 6~20)'%>
 							</div>
@@ -26,7 +21,9 @@
 								<%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%>
 							</div>
 							<br><br>
-							<%= f.button "Reset" , class: 'btn btn-primary btn-lg btn-block' %>
+							<div class="actions">
+								<button type="submit" name="commit" class="btn btn-primary btn-lg btn-block" data-disable-with="Change my password">Change my password</button>
+							</div>
 							<% end %>
 							<br><br><br><br>
 						</div>

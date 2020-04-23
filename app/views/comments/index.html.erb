@@ -7,6 +7,8 @@
 		<tr>
 			<th> Option </th>
 
+			<th> #</th>
+
 			<th> Username </th>
 					
 			<th> Course Code </th>
@@ -35,6 +37,8 @@
 				<%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %>
 			</td>
 
+			<td><%= comment.id%></td>
+			
 			<td><%= comment.username %></td>
 	
 			<td><%= comment.courseid %></td>

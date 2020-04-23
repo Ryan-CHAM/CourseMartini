@@ -7,18 +7,18 @@ Course Martini is based on Ruby on Rails. Before running our codes on localhost,
 
 ## Pages
 ### Welcome Page
-![Welcome](welcome.png)
+![Welcome](/readmepics/welcome.png)
 
 ### Search Page
-![Search](search.jpeg)
+![Search](/readmepics/search.jpeg)
 
 ### Charts
-![Chart 1](chart1.jpeg)
-![Chart 2](chart2.jpeg)
+![Chart 1](/readmepics/chart1.jpeg)
+![Chart 2](/readmepics/chart2.jpeg)
 
 ### Course Page
-![Course 1](course1.jpeg)
-![Course 2](course2.jpeg)
+![Course 1](/readmepics/course1.jpeg)
+![Course 2](/readmepics/course2.jpeg)
 
 ### Contact Us
-![Contact Us Page](contactus.jpeg)
+![Contact Us Page](/readmepics/contactus.jpeg)

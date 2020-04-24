@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     add_flash_types :warning
     
   def first_time_visit?
-      unless user_signed_in? && !cookies[:first_visit]
-        cookies[:first_visit] = 1
+      cookies[:first_visit] = 1
+      unless user_signed_in?
         redirect_to '/welcome'
       end
   end

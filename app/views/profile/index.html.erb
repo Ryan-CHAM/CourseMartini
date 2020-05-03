@@ -1,3 +1,9 @@
+<%#
+    CONTROLLER: profile
+    VIEW: /profile/{id}
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: this page shows the profile page of a certain user with {id}
+%>
 <div class="bg">
     <div class="container">
         <div class="row">
@@ -7,18 +13,22 @@
                         <div class="col-lg-8 offset-lg-2" >   
                             <div class="text_box">
                                 <strong>About me</strong><br>
+                                <%# If the user does not have an intro, display the sentence%>
                                 <%if @user.intro == nil || @user.intro == ""%>
                                     <p>This user did not write anything here </p>
+                                <%# Else display what they wrote%>
                                 <%else%>
                                      <%=@user.intro%>
                                 <%end%>
                             </div>
 
+                            <%# Display the amount of comments created by the user%>
                             <div class="text_box">
                                 <strong>Comments contributed</strong><br>
                                 <p><%= @count%></p>
                             </div>
 
+                            <%# Show the latest comment by the user%>
                             <div class="text_box">
                                 <strong>Latest comment</strong><br>
                                 <%unless @comment == nil%>
@@ -36,12 +46,14 @@
                                                 <p><%= @comment.posts %></p>
                                         </div>
                                     </div>
+                                <%# If the user does not have comment, show the sentence below%>
                                 <%else%>
                                     <p>The user has no comments yet</p>
                                 <% end %>
                             </div>
                             <br>
-                            <p style="text-align: right"><a href="/profile/comments/<%=@user.id%>">View all his comments</a></p>
+                            <%# Link to all the user's comments%>
+                            <p style="text-align: right"><a href="/profile/comments/<%=@user.id%>">View all his/her comments</a></p>
                             <br>
                         </div>    
                     </div>

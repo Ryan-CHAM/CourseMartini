@@ -1,15 +1,28 @@
+<%#
+    CONTROLLER: devise-users
+    VIEW: /users/sign_up
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: sign-up page for new users
+%>
 <div class= "bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="col-lg-6 offset-lg-3">
+                    <%# Input form layout%>
                     <div class="user_form" style="margin-top:70px">
                         <h2 style="margin-bottom:-30px"><strong>Sign Up</strong></h2>       
                         <div class="col-lg-8 offset-lg-2">
+                            <%# Show error if something is wrong with the input%>
                             <% if @user.errors.any? %>
                                 <div class="signup_alert" role="alert">
                                     <br>
                                     <% @user.errors.full_messages.each do |msg| %>
+                                        <%# 
+                                            The authentication for format is mixed (devise-generated and programmed),
+                                            so there are some repeated messages.
+                                            If there are more than 1 message, and a contains "invalid", then skip to next
+                                        %>
                                         <%if @user.errors.size ==1%>
                                         <%elsif msg.include?("invalid")%>
                                             <%next%>
@@ -18,6 +31,7 @@
                                     <%end%>
                                 </div>
                             <% end %>
+                            <%# Form with authenticity token%>
                             <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Name: length 2~16" type="text" name="user[name]" id="user_name" />
@@ -33,6 +47,7 @@
                                 </div>
                                 <%= f.button "Create User", class: 'btn btn-primary btn-lg btn-block' %>
                             <% end %>
+                                <%# Link to sign in if user already has account%>
                                 <p>Already have an account? <br><a href="/users/sign_in">Sign in here!</a></p>
                             <br><br><br><br>
                         </div>

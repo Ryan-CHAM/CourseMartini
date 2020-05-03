@@ -1,31 +1,39 @@
+<%#
+    APPLICATION LAYOUT
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: It provides a common layout for all pages, makes redirecting faster
+	         without re-rendering some shared contents
+	NOTE: All pages only contain the "body" part because others are rendered by this layout
+%>
 <!DOCTYPE html>
 <html>
-
-
 <head>
 	<title>Course Martini</title>
-
+	<%# Rails-generated meta-tags for security concerns%>
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
-
+	<%# Link to scss stylesheets and javascripts%>
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%# Link to font-awesome stylesheets for small icons%>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+	<%# Navbar supporting mobile users%>
 	<nav class="navbar stroke navbar-fixed-top navbar-expand-lg navbar-dark">
 		<a class="navbar-brand" href="/homepage" style="padding-top:2px;"><strong>CourseMartini</strong></a>
 		<button class="navbar-toggler collpased" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
+		<%# Navbar content%>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class=""><a class="nav-link" href="/homepage/overview">Overview</a></li>
 				<li class=""><a class="nav-link" href="/homepage/about">About us</a></li>
 				<li class=""><a class="nav-link" href="/homepage/contact">Contact Us</a></li>
+				<%# If user is signed in, display a user-drop down%>
 				<% if user_signed_in? %> 
 					<li class="dropdown">
 						<a class="nav-link drop-tab" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %>&nbsp<i class="fa fa-caret-down"></i></a>
@@ -33,6 +41,7 @@
 							<a class="dropdown-item" href="/profile/<%=current_user.id%>">My profile</a>
 							<a class="dropdown-item" href="/profile/comments/<%=current_user.id%>">My comments</a>
 							<a class="dropdown-item" href="/profile/setting">Setting</a>
+							<%# If user is admin, show additional items in the drop-down%>
 							<% if current_user&.admin? %>
 								<a class="dropdown-item" href="/admin/index">Admin Page</a>
                                 <% unless @proposal_exist == nil %>
@@ -41,38 +50,48 @@
                                 <a class="dropdown-item" href="/proposals">Process Proposals</a>
                                 <% end %>
 							<% end %>
+							<%# Session-destroy logout button%>
 							 <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>   
 						</div>
 					</li>
 				<% else %>
+					<%# If user is not signed-in, display sign in and sign up%>
 					<li class=""><a class="nav-link" href="/users/sign_in">Sign in </a></li>
 					<li class=""><a class="nav-link" href="/users/sign_up">Sign up</a></li>
 				<% end %>
 				
 				
 			</ul>
-
+			<%# Search bar in navbar%>
 			<form class="form-inline nav navbar-nav navbar-right" action="/search" accept-charset="UTF-8" method="get">
 				<input class="form-control md-6 mr-2" type="text" placeholder="search a course" aria-label="Search" name="search" id="search">
 				<br>
-				<button class="btn btn-outline-info my-2 my-sm-1" type="submit" style="font-weight: 500;
-  text-transform: uppercase;">Search</button>
+				<button class="btn btn-outline-info my-2 my-sm-1" type="submit" style="font-weight: 500; text-transform: uppercase;">Search</button>
 			</form>
 			
 		</div>
 	</nav>
+	<%# Alert notices for success e.g. "Sign in successful"%>
 	<% if notice %>
 		<div class="alert alert-success" role="alert">
 			<p class="notice"><%= notice %></p>
 		</div>
 	<% end %>
 
+	<%# "yield" is the rendering of body pages (Most of other pages in the "View")%>
 	<%= yield %>
 
+	<%# Footer%>
 	<footer class="end">
 			<p>Created by team Course Martini</p>
     </footer>
 
+	<%# 
+		Due to compatibility issues with turbolink and jquery
+		Navbar cannot work in mobile cases
+		Therefore an additional javascript for mobile user's navbar
+		without using jquery is needed below
+	%>
 	<script>
 		let collapseElements = document.querySelectorAll('[data-toggle="collapse"]');
 		const CLASS_SHOW = 'show';

@@ -1,19 +1,30 @@
+<%#
+    CONTROLLER: profile
+    VIEW: /profile/setting
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: this page allows user to change username/ self introduction
+%>
 <div class="bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
+                <%# Input form layout%>
                 <div class="user_form">
                     <h2 style="margin-bottom: -10px; text-transform: uppercase"><strong>Setting</strong></h2>
-                    <div class="col-lg-8 offset-lg-2" >   
+                    <div class="col-lg-8 offset-lg-2" >
+                        <%# Alert errors if input is invalid%>   
                         <% if @user.errors.any? %>
                                 <div class="signup_alert" role="alert">
                                         <p>Name is either invalid or taken</p>
                                 </div>
                             <% end %>
+                        <%# Display user email%>
                         <div class="text_box">
                             <strong>Registered email</strong><br>
                             <p style="font-size:12 margin-top:5px"><%= @user.email%></p>
                         </div>
+
+                        <%# Form with authenticity token for changing name and intro%>
                         <%= form_tag("/profile/update", method: "post") do %>                   
                             <div class="text_box">
                                 <strong>User name</strong><br>
@@ -28,6 +39,7 @@
                         <button name="button" type="submit" class="btn btn-primary btn-lg btn-block">Save changes</button>
                         <%end%>
                         <br>
+                        <%# Link to all current_users' comments%>
                         <p style="text-align: right"><a href="/profile/comments/<%=@user.id%>">View all my comments</a></p>
                         <br>
                     </div>    

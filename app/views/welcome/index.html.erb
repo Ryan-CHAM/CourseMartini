@@ -1,16 +1,24 @@
+<%#
+    CONTROLLER: profile
+    VIEW: /welcome
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: cover page for users of first time visit
+	NOTE: Cover page is not rendered from the layout, so needs all the essentials for html file
+%>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<title>Course Martini</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<%# Rails safety meta-tags%>
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
 
+	<%# Calling stylesheets and javascripts%>
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<%# Additional style for overriding bootstrap's container-fluid%>
 	<style>
 		.container-fluid {
 			padding: 0;
@@ -20,6 +28,7 @@
 
 <body>
 	<div class="container-fluid">
+		<%# Cover%>
 		<div class="cover">
 			<div class="page-header" style="text-align: center;">
         		<h1 style="color:white; text-shadow: 0.1em 0.1em 0.2em black">Course Martini</h1>
@@ -28,10 +37,13 @@
 				<div class="row">
 					<div class="col-lg-2 offset-lg-5">
 						<div class="col-lg-8 offset-lg-2">
+							<%# Redirect to /homepage%>
 							<a class="btn btn-light rounded-pill  btn-block" style="font-weight:600"
 								href="/homepage">Home</a><br><br>
+							<%# Link to in-page about-us%>
 							<a class="btn btn-light rounded-pill  btn-block" style="font-weight:600"
 								href="#about-us">About Us</a><br><br>
+							<%# Link to bottom of the page%>
 							<a class="btn btn-light rounded-pill  btn-block" style="font-weight:600"
 								href="#get-started">Get Started</a>
 						</div>
@@ -40,6 +52,7 @@
 			</div>
 		</div>
 
+		<%# Short about us%>
 		<div class="about">
 			<div class="col-lg-8 offset-lg-2">
 				<br><br>
@@ -53,10 +66,13 @@
 						improve the overall quality of their academic experience during the studying period.</p>	
 			</div>
 		</div>
-	
+
+		<%# Arrow at the bottom of the screen that linkes to the next section%>
 		<div class="arrow"  onclick="location.href ='#quote'" style="cursor: pointer;">
 			<%= image_tag("arrow.png", size:"50x50", :alt => "arrow") %>
 		</div>	
+
+		<%# Student's quote on our website%>
 		<div class="comment">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
@@ -74,85 +90,80 @@
 			</div>
 		</div>
 
-			<div class="get-started gradient-light" >
-				<h1 id ="get-started"> Get Started here!</h1>
-				<div class="row">
-					<div class="col-lg-8 offset-lg-2">
+		<%# Getting started section%>
+		<div class="get-started gradient-light" >
+			<h1 id ="get-started"> Get Started here!</h1>
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
 
-						<div class="row">
-							<div class="col-lg-4">
-								<div class="card-btn">
-									<div class="card mb-4 shadow-sm" onclick="location.href ='/users/sign_up';"
-										style="cursor: pointer;">
-										<div class="card-img-top">
-											<h2>Join us</h2>
-										</div>
-										<div class="card-body">
-											<p class="card-text">
-												Please join our community of Course Martini to share your opinions on
-												courses, and
-												improve the plateform.
-											</p>
-										</div>
+					<%# Tab link to sign-up page%>
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="card-btn">
+								<div class="card mb-4 shadow-sm" onclick="location.href ='/users/sign_up';"
+									style="cursor: pointer;">
+									<div class="card-img-top">
+										<h2>Join us</h2>
+									</div>
+									<div class="card-body">
+										<p class="card-text">
+											Please join our community of Course Martini to share your opinions on
+											courses, and
+											improve the plateform.
+										</p>
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<div class="col-lg-4">
-								<div class="card-btn">
-									<div class="card mb-4 shadow-sm" onclick="location.href ='/homepage/overview';"
-										style="cursor: pointer;">
-										<div class="card-img-top2">
-											<h2>Trends!</h2>
-										</div>
-										<div class="card-body">
-											<p class="card-text">Our platform have various type of graphs on course
-												statstics based on the
-												reviews collected.</p>
-										</div>
+						<%# Tab link to overview page%>
+						<div class="col-lg-4">
+							<div class="card-btn">
+								<div class="card mb-4 shadow-sm" onclick="location.href ='/homepage/overview';"
+									style="cursor: pointer;">
+									<div class="card-img-top2">
+										<h2>Trends!</h2>
+									</div>
+									<div class="card-body">
+										<p class="card-text">Our platform have various type of graphs on course
+											statstics based on the
+											reviews collected.</p>
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<div class="col-lg-4">
-								<div class="card-btn">
-									<div class="card mb-4 shadow-sm" onclick="location.href ='/homepage';"
-										style="cursor: pointer;">
-										<div class="card-img-top3">
-											<h2>Search</h2>
-										</div>
-										<div class="card-body">
-											<p class="card-text">If you want to get started with our system directly,
-												you may as well start your search first.
-											</p>
-										</div>
+						<%# Tab link to homepage%>
+						<div class="col-lg-4">
+							<div class="card-btn">
+								<div class="card mb-4 shadow-sm" onclick="location.href ='/homepage';"
+									style="cursor: pointer;">
+									<div class="card-img-top3">
+										<h2>Search</h2>
+									</div>
+									<div class="card-body">
+										<p class="card-text">If you want to get started with our system directly,
+											you may as well start your search first.
+										</p>
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<div class="col-lg-8 offset-lg-2" style="text-align: center;">
-								<h2>Already a member?</h2>
-								<a type="button" href="/users/sign_in" class="btn btn-lg btn-outline-light">Sign in here!</a>
-							</div>
+						<div class="col-lg-8 offset-lg-2" style="text-align: center;">
+							<h2>Already a member?</h2>
+							<a type="button" href="/users/sign_in" class="btn btn-lg btn-outline-light">Sign in here!</a>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
+		<%# Footer%>
 		<div class="end">
 			<p>Created by team Course Martini</p>
 		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
 </body>
 
 </html>

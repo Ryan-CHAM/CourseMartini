@@ -1,12 +1,20 @@
+<%#
+    CONTROLLER: profile
+    VIEW: /profile/comments/{id}
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: this page shows all the comments given by a certain user
+%>
 <div class="bg">
 	<div class="container">
 	 	<div class="row">
 			<div class="col-lg-10 offset-lg-1">
 				<div class="user_form" style="margin-bottom: 50px">
+					<%# Display the user's name%>
 					<h2 style="margin-bottom: 10px; text-transform: uppercase"><strong><%= @user.name%>'s Comments</strong></h2>
 					<div class="row">
 						<div class="col-lg-10 offset-lg-1">
 							<div class="card-columns">
+								<%# If comment exists, show all comments%>
 								<%if @comments != nil%>
 									<% @comments.each do |comment| %>
 											<div class="text_box" style="margin-top:0px">
@@ -21,6 +29,7 @@
 															<p>Workload: <%= comment.workload_score %> / 5</p>
 															<p>GPA: <%= comment.gpa %> / 4</p><br>
 															<p><%= comment.posts %></p>
+															<%# If current user is admin, show delete option on comments%>
 															<%if current_user&.admin?%>							
 																<p><%= link_to "delete", comment_path(comment), method: "delete", data: {confirm: "Comfirm?"} %></p>
 															<%end%>

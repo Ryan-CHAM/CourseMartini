@@ -1,13 +1,22 @@
+<%#
+    CONTROLLER: devise-users
+    VIEW: /users/password/edit
+    PROGRAMMER: Hsieh, Tzuchun
+    PURPOSE: displays the page for "forgot password", send request to mailer
+%>
 <div class="bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="col-lg-6 offset-lg-3">
+                    <%# Input form layout%>
                     <div class="user_form" style="margin-top: 100px">
                         <h2 style="margin-bottom:-30px"><strong>Forgot password?</strong></h2>
                         <div class="col-lg-8 offset-lg-2">
+                            <%# Devise form for password%>
                             <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
                             <br><br>
+                            <%# Show error if something is wrong with the input%>
                             <% if @user.errors.any? %>
                             <div class="alert alert-danger" role="alert">
                                 <p>Please enter the correct email</p>

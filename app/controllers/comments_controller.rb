@@ -1,3 +1,9 @@
+=begin
+
+
+=end
+
+
 class CommentsController < ApplicationController
 	before_action :check_sign_in
 	def index

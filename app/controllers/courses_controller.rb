@@ -1,3 +1,12 @@
+=begin
+COURSE CONTROLLER – Controls the actions related to courses
+PROGRAMMER:   Zhou Jinan
+VERSION:      last update 2020-4-20
+PURPOSE:      Setup the access of the course database; connect the course with comments and proposals. 
+              Control the workflow of course creation, delete and edit. 
+=end
+
+
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 

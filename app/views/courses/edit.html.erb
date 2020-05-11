@@ -1,3 +1,11 @@
+<%#
+    VIEW for course edit page
+    PROGRAMMER: Zhou Jinan
+    VERSION: last update Apr 15, 2020
+    PURPOSE: displays the form to edit courses.
+%>
+
+
 <h1>Editing Course</h1>
 
 <div class="container">
@@ -5,6 +13,7 @@
     <div class="col">
       <%# 1 of 3 %>
     </div>
+    <%# the central row: where the form is displayed %>
     <div class="col-6">
      <%= render 'form', course: @course %>
 

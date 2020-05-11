@@ -1,3 +1,12 @@
+=begin
+PROPOSAL CONTROLLER – Controls the actions related to proposals
+PROGRAMMER:   Zhou Jinan
+VERSION:      last update 2020-4-21
+PURPOSE:      Setup the access of the proposal database; connect the proposals with courses. Control the workflow of 
+              proposal create, approval and dneial. 
+=end
+
+
 class ProposalsController < ApplicationController
   before_action :set_proposal, only: [:show, :edit, :update, :destroy]
 

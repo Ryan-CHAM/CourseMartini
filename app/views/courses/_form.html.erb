@@ -1,4 +1,14 @@
+<%#
+    VIEW for course tables
+    PROGRAMMER: Zhou Jinan
+    PURPOSE: displays the form related to courses. It is used in every scenario when a course 
+             is created or edited. 
+%>
+
+
+
 <%= form_with(model: course, local: true) do |form| %>
+  <%# message bar for error information %>
   <% if course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -11,6 +21,7 @@
     </div>
   <% end %>
 
+  <%# the fields of the form %>
   <div class="field">
     <label> Course Code </label>
     <%= form.text_field :code, class: 'form-control' %>
@@ -51,6 +62,7 @@
     <%= form.text_area :url, class: 'form-control' %>
   </div>
 
+  <%# submit buttoms %>
   <button type="submit" class="btn btn-primary">Submit</button>
   <p></p>
 

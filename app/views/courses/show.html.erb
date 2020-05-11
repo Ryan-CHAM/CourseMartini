@@ -1,3 +1,11 @@
+<%#
+    VIEW for course show page
+    PROGRAMMER: Zhou Jinan
+    VERSION: last update Apr 23, 2020
+    PURPOSE: displays the detailed information of a course, including basic info, comments, trends (in digrams), rating and resources.
+%>
+
+ <%# message bar for error information %>
 <% if warning %>
 		<div class="alert alert-danger" role="alert">
 			<p class="notice"><%= warning %></p>
@@ -10,6 +18,7 @@
     <div class="col">
       <%# 1 of 3 %>
     </div>
+    <%# puts several tags in the central row %>
     <div class="col-9">
       <%# 2 of 3 (wider) %>
       <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
@@ -30,7 +39,7 @@
   </li>
 </ul>
 
-
+<%# tag 1: basic information %>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   <p><br></p>
@@ -71,6 +80,7 @@
   </div>
   </div>
 
+  <%# tag 2: ratings %>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <p><br></p>
 
@@ -82,6 +92,7 @@
     <div class="card-header"><strong>Overall Rating</strong></div>
       <div class="card-body text-primary">
         <h5 class="card-title"><%= @course.workload.round(1) %> / 5</h5>
+        <%# ratings are visualized in progress bars %>
         <div class="progress">
           <div class="progress-bar bg-primary" role="progressbar" style="width: <%=@course.overall*20%>%" aria-valuenow=@course.overall aria-valuemin="0" aria-valuemax="5"></div>
         </div>
@@ -143,6 +154,7 @@
 
 
 
+  <%# tag 3: the interactive digram for the rating trends %>
   <div class="tab-pane fade" id="trend" role="tabpanel" aria-labelledby="trend-tab">
   <p><br></p>
 
@@ -160,7 +172,7 @@
 
  
 
-
+  <%# tag 4: comments. shown in card columns for dynamic formatting %>
   <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
   <p><br></p>
   
@@ -235,7 +247,7 @@
 
   </div>
 
-
+  <%# tag 5: resources %>
   <div class="tab-pane fade" id="resource" role="tabpanel" aria-labelledby="resource-tab">
   <p><br></p>
 
@@ -270,9 +282,12 @@
 </div>
 
 <p><br></p>
+<%# edit course button, for admin only %>
 <% if current_user&.admin? %>
   <%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-outline-dark" %>
 <% end %>
+
+<%# useful buttons %>
 <%= link_to 'Back', courses_path, :class=>"btn btn-outline-dark" %>
 <%= link_to 'Add Comment', new_comment_path(@course), :class=>"btn btn-outline-primary" %>
 <% if current_user&.admin? %>
@@ -289,7 +304,7 @@
 </div>
 
 
-
+<%# the javascript for interactive digrams %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});

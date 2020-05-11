@@ -1,3 +1,11 @@
+=begin
+Model for proposal
+PROGRAMMER:   Zhou Jinan
+VERSION:      last update 2020-3-5
+PURPOSE:      define the columns for the proposal in database
+=end
+
+
 class CreateProposals < ActiveRecord::Migration[6.0]
   def change
     create_table :proposals do |t|

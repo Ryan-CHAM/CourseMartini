@@ -1,3 +1,13 @@
+=begin
+Model for course
+PROGRAMMER:   Zhou Jinan
+VERSION:      last update 2020-3-5
+PURPOSE:      define the columns for the course in database
+=end
+
+
+
+
 class CreateCourses < ActiveRecord::Migration[6.0]
   def change
     create_table :courses do |t|

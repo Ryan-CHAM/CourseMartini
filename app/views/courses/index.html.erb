@@ -1,3 +1,13 @@
+<%#
+    VIEW for course index page
+    PROGRAMMER: Zhou Jinan
+    VERSION: last update May 11, 2020
+    PURPOSE: display all the courses and their details information.
+             allows to show, edit and delete course.
+             only available to admin
+%>
+
+
 <style>
   td{
     white-space: normal !important; 
@@ -13,6 +23,7 @@
   <%= link_to 'Proposals ', "/proposals", :class=>"btn btn-outline-primary"%>
 </div>
 <br>
+    <%# the header of the table %>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -41,6 +52,7 @@
       </thead>
 
       <tbody>
+      <%# display the detailed information of all courses one by one%>
         <% @courses.reverse.each do |course| %>
           <tr>
             <td><%= course.id %></td>
@@ -67,6 +79,7 @@
             <td><%= course.url %></td>
 
             <td>
+              <%# buttons for show course info, edit course and delete course %>
               <%= link_to 'Show', course, :class=>"btn btn-outline-primary btn-block btn-sm" %>
               <%= link_to 'Edit', edit_course_path(course), :class=>"btn btn-outline-primary btn-block btn-sm" %>
               <%= link_to 'Del', course_path(course), :method => :delete,

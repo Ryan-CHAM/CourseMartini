@@ -1,3 +1,12 @@
+<%#
+    VIEW for proposal form
+    PROGRAMMER: Zhou Jinan
+    PURPOSE: displays the form related to proposals. It is used in every scenario when a proposal 
+             is created or edited. 
+%>
+
+
+
 <%= form_with(model: proposal, local: true) do |form| %>
   <% if proposal.errors.any? %>
     <div id="error_explanation">

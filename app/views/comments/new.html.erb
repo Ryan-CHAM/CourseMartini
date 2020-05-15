@@ -1,10 +1,17 @@
-
+<%=
+=begin
+COMMENT VIEW NEW - User Interface of new comment page
+PROGRAMMER: LI Jingchen
+PURPOSE: Use for creating new comment
+=end
+%>
 
 <h1>new comment</h1>
 
 
 <div class="container">
 	<div class="row">
+	<%#divide the page into 3 part%>
 
 		<div class="col-sm-3">
 		<%# 1 of 3 %>
@@ -19,7 +26,7 @@
 
 
 			<p>
-			 
+			 <%# use buttons for user to sellect their grades %>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">
 				Grade: &nbsp&nbsp
 				<div class="btn-group mr-2" role="group" aria-label="First group">
@@ -61,7 +68,7 @@
 			</p>
 
 
-
+			<%# all kind of scores of the course is using slider for user to choose %>
 			<div class="slidecontainer">
 
 				<p>Overall Score: <span id="Overall"></span></p>
@@ -165,18 +172,18 @@
 			</div>
 				
 				
-				
+			<%# place to make comment, the max number of characters is 1000 each comment (can prevent some malicious attack by input enormous characters) %>
 			<div class="field">
 			    <label> Comment </label>
 			    <%= f.text_area :posts, maxlength:1000, class: 'form-control' %>
 
 			</div>
 				
-			<%= hidden_field_tag :course_id, @id %>
+			<%= hidden_field_tag :course_id, @id %>	<%# this is hidden, it is used to pass course_id to params so that when saving this comment, it has course_id %>
 
 
 			<div class="actions">
-			    <%= f.submit %>
+			    <%= f.submit %>							<%# submit the comment%>
 			</div>
 				
 
@@ -184,7 +191,7 @@
 			
 			<br />
 			
-			<%= link_to 'back to course', @course%>
+			<%= link_to 'back to course', @course%>				<%# abandon making comment, go back to course page%>
 
 		</div>
 

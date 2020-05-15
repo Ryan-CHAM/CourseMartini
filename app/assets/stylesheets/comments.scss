@@ -1,6 +1,7 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+// modidy slider in new_comment_path
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
@@ -31,7 +32,7 @@
   width: 25px; /* Set a specific slider handle width */
   height: 25px;
   border-radius: 50%;  /* Slider handle height */
-  background: #000000; /* Green background */
+  background: #000000; /* Black background */
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -39,6 +40,6 @@
   width: 25px; /* Set a specific slider handle width */
   height: 25px;
   border-radius: 50%; /* Slider handle height */
-  background: #000000; /* Green background */
+  background: #000000; /* Black background */
   cursor: pointer; /* Cursor on hover */
 }

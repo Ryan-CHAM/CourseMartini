@@ -1,25 +1,13 @@
+=begin
+COURSE MODEL - Controll table of courses
+PROGRAMMER: QIN Yuren
+PURPOSE: Define the relations between course and other class as well as a method to find random 3 courses
+=end
 class Course < ApplicationRecord
 	has_many :comments
 	has_many :users, through: :comments
     validates :code, uniqueness: {case_sensitive: false}
 
-    def self.search(search)
-        if search
-            i = search.size
-            j = 0
-            results = Array.new
-            Course.all.each do |course|
-                if search == course.code[0..i - 1]
-                    results[j] = course.code
-                    j = j + 1
-                end
-            end
-            if results
-                Course.where(code: results)
-            end
-        end
-    end
-    
     def self.random()
         if Course.all.size <= 3
             return Course.all

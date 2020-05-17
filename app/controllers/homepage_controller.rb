@@ -34,6 +34,7 @@ class HomepageController < ApplicationController
           i = i + 1
       end
       @courses = array.to_json.html_safe
+      # provide the arrays required by the visualization
       
       array2 = Array.new
       array2[0] = ['Course Code', 'Teaching Qulity', 'Workload', 'Usefulness', 'Difficulty', 'CGPA', 'Overall']
@@ -43,6 +44,7 @@ class HomepageController < ApplicationController
           i = i + 1
       end
       @courses2 = array2.to_json.html_safe
+      # provide the arrays required by the visualization
   end
   
 end

@@ -1,3 +1,10 @@
+<%#
+    VIEW for search page
+    PROGRAMMER: QIN Yuren
+    VERSION: last update Apr 23, 2020
+    PURPOSE: displays the results of search, and provides some entrances to other pages, such as proposal pages
+%>
+
 <div class="page-header" style="text-align: center;">
   <br>
   <h1>Search your course!</h1><br><br>
@@ -81,6 +88,8 @@
   </div>
   <br>
   <% end %>
+  
+    <%# pagination %>
   <div class="container pagination", style="margin:0% 0% 0% 16%" >
     <%= paginate @courses, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
   </div>

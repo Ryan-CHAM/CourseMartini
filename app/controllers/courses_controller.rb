@@ -107,6 +107,7 @@ class CoursesController < ApplicationController
     end
   end
   
+  # GET /search
   def search
       if params[:search] == ""
         redirect_to "/random"
@@ -114,6 +115,7 @@ class CoursesController < ApplicationController
       @courses = Course.where("courses.code LIKE ?", "%#{params[:search].upcase}%").page(params[:page]).per(5)
   end
   
+  # GET /random
   def random
       @courses = Course.random
   end
